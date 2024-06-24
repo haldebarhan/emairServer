@@ -9,7 +9,7 @@ export class Denree {
   @Prop()
   produit: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Mesure' }] })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Mesure'  })
   mesure: Mesure;
 }
 

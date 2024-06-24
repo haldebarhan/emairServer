@@ -10,5 +10,6 @@ import { Magasin, MagasinSchema } from 'src/schemas/magasin.schema';
   ],
   providers: [MagasinService],
   controllers: [MagasinController],
+  exports: [MagasinService]
 })
 export class MagasinModule {}

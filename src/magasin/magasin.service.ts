@@ -6,14 +6,20 @@ import { CreateMagasinDto } from './dto/create-magasin.dto';
 
 @Injectable()
 export class MagasinService {
-  constructor(@InjectModel('Magasin') private MagModel: Model<Magasin>) {}
+  constructor(@InjectModel(Magasin.name) private MagModel: Model<Magasin>) {}
 
   async create(createMagasinDto: CreateMagasinDto): Promise<Magasin> {
     const createMag = new this.MagModel(createMagasinDto);
     return createMag.save();
   }
 
-  async findAll(): Promise<Magasin[]> {
-    return this.MagModel.find().exec();
+  async findAll() {
+    const query = await this.MagModel.find().exec();
+    return query;
+  }
+
+  async getOne(id: string) {
+    const query = await this.MagModel.findById(id).exec();
+    return query;
   }
 }

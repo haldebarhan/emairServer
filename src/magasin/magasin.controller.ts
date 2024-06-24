@@ -17,4 +17,6 @@ export class MagasinController {
   async findAll(): Promise<Magasin[]> {
     return this.magService.findAll();
   }
+
+
 }

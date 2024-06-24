@@ -12,5 +12,6 @@ import { MesureModule } from 'src/mesure/mesure.module';
   ],
   providers: [DenreeService],
   controllers: [DenreeController],
+  exports: [DenreeService]
 })
 export class DenreeModule {}

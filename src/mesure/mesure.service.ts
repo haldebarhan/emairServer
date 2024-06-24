@@ -6,19 +6,19 @@ import { CreateMesureDto } from './dto/create-mesure.dto';
 
 @Injectable()
 export class MesureService {
-  constructor(@InjectModel('Mesure') private mesureModel: Model<Mesure>) {}
+  constructor(@InjectModel(Mesure.name) private mesureModel: Model<Mesure>) {}
 
   async create(createMesreDto: CreateMesureDto): Promise<Mesure> {
     const createMesure = new this.mesureModel(createMesreDto);
     return createMesure.save();
   }
 
-  async findById(id: string){
-    const query =  await this.mesureModel.findById(id).exec()
-    return query
+  async findById(id: string) {
+    const query = await this.mesureModel.findById(id).exec();
+    return query;
   }
 
-  async findAll(): Promise<Mesure[]> {
+  async findAll() {
     return this.mesureModel.find().exec();
   }
 }
