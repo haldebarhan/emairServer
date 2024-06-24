@@ -8,19 +8,19 @@ export class UniteController {
 
   @Post()
   async createUnite(@Body() createUniteDto: CreateUniteDto) {
-    const result = this.uniteService.create(createUniteDto);
+    const result = await this.uniteService.create(createUniteDto);
     return result;
   }
 
   @Get()
   async getAllUnite() {
-    const result = this.uniteService.findAll();
+    const result = await this.uniteService.findAll();
     return result;
   }
 
   @Get(':id')
   async getOne(@Param() id: string) {
-    const result = this.uniteService.findOne(id);
+    const result = await this.uniteService.findOne(id);
     return result;
   }
 }
