@@ -9,9 +9,10 @@ import { StockModule } from './stock/stock.module';
 import { UniteModule } from './unite/unite.module';
 import { MenuModule } from './menu/menu.module';
 import { RecetteModule } from './recette/recette.module';
+import { ConsommationModule } from './consommation/consommation.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest'), MagasinModule, MesureModule, DenreeModule, StockModule, UniteModule, MenuModule, RecetteModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/nest'), MagasinModule, MesureModule, DenreeModule, StockModule, UniteModule, MenuModule, RecetteModule, ConsommationModule],
   controllers: [AppController],
   providers: [AppService],
 })

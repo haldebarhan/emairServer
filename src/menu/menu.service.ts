@@ -16,7 +16,14 @@ export class MenuService {
   }
 
   async findAll() {
-    const query = this.menuModel.find().exec();
+    const query = this.menuModel
+      .find()
+      .populate('petit_dejeuner')
+      .populate('hors_doeuvre')
+      .populate('dejeuner')
+      .populate('dessert')
+      .populate('diner')
+      .exec();
     return query;
   }
 
