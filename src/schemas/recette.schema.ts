@@ -13,9 +13,10 @@ export class Recette {
     {
       denree: { type: mongoose.Schema.Types.ObjectId, ref: 'Denree' },
       ration: { type: Number },
+      unite: { type: String },
     },
   ])
-  ingredients: { denree: Denree; ration: Number }[];
+  ingredients: { denree: Denree; ration: Number; unite: string }[];
 }
 
 export const RecetteSchema = SchemaFactory.createForClass(Recette);

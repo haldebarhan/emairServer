@@ -15,14 +15,18 @@ export class MesureController {
   }
 
   @Get()
-  async findAll(): Promise<Mesure[]> {
-    return this.mesService.findAll();
+  async findAll() {
+    const results = await this.mesService.findAll();
+    const mesures = results.map((result) => {
+      return { id: result._id, mesure: result.unite };
+    });
+    return mesures;
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Imesure>{
+  async findOne(@Param('id') id: string) {
     const query = await this.mesService.findById(id);
-    const result: Imesure = {id: query._id.toString(), unite: query.unite}
+    const result: Imesure = { id: query._id.toString(), unite: query.unite };
     return result;
   }
 }

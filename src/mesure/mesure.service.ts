@@ -19,6 +19,6 @@ export class MesureService {
   }
 
   async findAll() {
-    return this.mesureModel.find().exec();
+    return this.mesureModel.find().sort('unite').exec();
   }
 }

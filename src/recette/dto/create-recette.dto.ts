@@ -1,4 +1,4 @@
 export class CreateRecetteDto {
   nomRecette: string;
-  ingredients: { denree: string; ration: number }[];
+  ingredients: { denree: string; ration: number; unite: string }[];
 }
