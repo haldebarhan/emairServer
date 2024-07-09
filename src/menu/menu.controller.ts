@@ -1,6 +1,16 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
+import { UpdateMenuDto } from './dto/update-menu.dto';
+import { sortByJour } from 'src/helpers/day-sort.helper';
 
 @Controller('menu')
 export class MenuController {
@@ -13,14 +23,28 @@ export class MenuController {
   }
 
   @Get()
-  async GetAllMenu() {
+  async getAllMenu() {
     const result = await this.menuService.findAll();
-    return result;
+    const sortedResult = sortByJour(result)
+    return sortedResult;
   }
 
   @Get(':id')
-  async GetOneMenu(@Param() id: string) {
+  async getOneMenu(@Param('id') id: string) {
     const result = await this.menuService.findOne(id);
     return result;
+  }
+
+  @Patch(':id')
+  async updateMenu(
+    @Param('id') id: string,
+    @Body() updateMenuDto: UpdateMenuDto,
+  ) {
+    const result = await this.menuService.updateMenu(id, updateMenuDto);
+    return result;
+  }
+  @Delete(':id')
+  async deleteMenu(@Param('id') id: string) {
+    return this.menuService.deleteMenu(id);
   }
 }

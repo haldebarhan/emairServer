@@ -21,14 +21,19 @@ export class DenreeService {
     const query = await this.denreeModel
       .find()
       .populate('mesure')
+      .populate('uc')
       .sort('produit')
       .exec();
     return query;
   }
 
   async findOne(id: string) {
-    const query = await this.denreeModel.findById(id).exec();
-    if(!query) throw new NotFoundException("eeeee")
+    const query = await this.denreeModel
+      .findById(id)
+      .populate('mesure')
+      .populate('uc')
+      .exec();
+    if (!query) throw new NotFoundException('Aucunes données trouvée');
     return query;
   }
   async updateDenree(denreeId: string, updateDenreeDto: UpdateDenreeDto) {

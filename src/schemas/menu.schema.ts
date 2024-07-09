@@ -6,7 +6,7 @@ export type MenuDocument = mongoose.HydratedDocument<Menu>;
 
 @Schema()
 export class Menu {
-  @Prop()
+  @Prop({type: String, unique: true, required: true})
   jour: string;
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Recette' })
   petit_dejeuner: Recette;

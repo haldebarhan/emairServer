@@ -38,6 +38,10 @@ export class DenreeController {
       id: product._id,
       product: product.produit,
       mesure: product.mesure.unite,
+      uc: product.uc.conversion,
+      equivalence: product.equivalence,
+      pu: product.pu,
+      valeur: product.valeur
     }));
   }
 
@@ -46,8 +50,12 @@ export class DenreeController {
     const result = await this.denreeService.findOne(id);
     const data = {
       id: result._id,
-      produit: result.produit,
-      mesure: result.mesure,
+      product: result.produit,
+      mesure: result.mesure.unite,
+      uc: result.uc.conversion,
+      equivalence: result.equivalence,
+      pu: result.pu,
+      valeur: result.valeur
     };
     return data;
   }
