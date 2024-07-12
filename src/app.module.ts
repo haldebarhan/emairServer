@@ -10,9 +10,10 @@ import { MenuModule } from './menu/menu.module';
 import { RecetteModule } from './recette/recette.module';
 import { ConsommationModule } from './consommation/consommation.module';
 import { ConversionUnitModule } from './conversion-unit/conversion-unit.module';
+import { ApprovisionnementModule } from './approvisionnement/approvisionnement.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule, ApprovisionnementModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -20,10 +20,10 @@ export class Magasin {
   ])
   stock: {
     denree: Denree;
-    quantite: Number;
-    conso: Number;
-    appro: Number;
-    balance: Number;
+    quantite: number;
+    conso: number;
+    appro: number;
+    balance: number;
   }[];
 
   @Prop({ type: Boolean, default: false })
