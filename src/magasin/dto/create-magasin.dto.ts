@@ -1,4 +1,10 @@
 export class CreateMagasinDto {
-  readonly mois: string;
-  readonly annee: string;
+  date: Date;
+  stock: {
+    denree: string;
+    quantite?: number;
+    conso?: number;
+    appro?: number;
+    balance?: number;
+  }[];
 }

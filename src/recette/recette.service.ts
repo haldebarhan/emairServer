@@ -27,9 +27,12 @@ export class RecetteService {
   async findOneRecette(recetteId: string) {
     const query = this.recetteModel
       .findById(recetteId)
-      .populate('ingredients.denree')
+      .populate({
+        path: 'ingredients.denree',
+        populate: [{ path: 'uc' }, { path: 'mesure' }],
+      })
       .exec();
-    if(!query) throw new NotFoundException("denree non trouvee")
+    if (!query) throw new NotFoundException('denree non trouvee');
     return query;
   }
 

@@ -1,15 +1,33 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
+import { Denree } from './denree.schema';
 
 export type MagasinDocument = HydratedDocument<Magasin>;
 
 @Schema()
 export class Magasin {
-  @Prop()
-  mois: string;
+  @Prop({ type: Date })
+  date: Date;
 
-  @Prop()
-  annee: string;
+  @Prop([
+    {
+      denree: { type: mongoose.Schema.Types.ObjectId, ref: 'Denree' },
+      quantite: { type: Number, default: 0 },
+      conso: { type: Number, default: 0 },
+      appro: { type: Number, default: 0 },
+      balance: { type: Number, default: 0 },
+    },
+  ])
+  stock: {
+    denree: Denree;
+    quantite: Number;
+    conso: Number;
+    appro: Number;
+    balance: Number;
+  }[];
+
+  @Prop({ type: Boolean, default: false })
+  complete: Boolean;
 }
 
 export const MagasinSchema = SchemaFactory.createForClass(Magasin);

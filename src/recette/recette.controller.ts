@@ -37,7 +37,7 @@ export class RecetteController {
       nom: result.nomRecette,
       ingredients: result.ingredients,
     };
-    if(!data) throw new NotFoundException("gggggggg")
+    if(!data) throw new NotFoundException("Aucune donnée correspondante")
     return data;
   }
 
