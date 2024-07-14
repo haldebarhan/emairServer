@@ -21,10 +21,13 @@ export class Consommation {
   ])
   report: {
     unite: Unite;
-    petit_dejeuner: Number;
-    dejeuner: Number;
-    diner: Number;
+    petit_dejeuner: number;
+    dejeuner: number;
+    diner: number;
   }[];
+
+  @Prop({ type: Boolean, default: false })
+  transmit: boolean;
 }
 
 export const ConsommationSchema = SchemaFactory.createForClass(Consommation);

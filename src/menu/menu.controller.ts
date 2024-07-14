@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { MenuService } from './menu.service';
 import { CreateMenuDto } from './dto/create-menu.dto';
@@ -25,8 +26,13 @@ export class MenuController {
   @Get()
   async getAllMenu() {
     const result = await this.menuService.findAll();
-    const sortedResult = sortByJour(result)
+    const sortedResult = sortByJour(result);
     return sortedResult;
+  }
+  @Get('search/')
+  async getMenuByDayName(@Query('query') query: string) {
+    const result = await this.menuService.findMenuByDay(query);
+    return result;
   }
 
   @Get(':id')
@@ -35,6 +41,7 @@ export class MenuController {
     return result;
   }
 
+ 
   @Patch(':id')
   async updateMenu(
     @Param('id') id: string,

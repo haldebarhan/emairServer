@@ -1,10 +1,13 @@
 export class CreateConsommationDto {
-  date: string;
+  date: Date;
   menu: string;
+  magasin: string
   report: {
     unite: string;
-    petit_dejeuner: Number;
-    dejeuner: Number;
-    diner: Number;
+    petit_dejeuner: number;
+    dejeuner: number;
+    diner: number;
   }[];
+
+  transmit: boolean;
 }

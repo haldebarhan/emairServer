@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Consommation } from 'src/schemas/consommation.schema';
 import { CreateConsommationDto } from './dto/create-consommation.dto';
+import { UpdateConsommationDto } from './dto/update-consommation.dto';
 
 @Injectable()
 export class ConsommationService {
@@ -35,21 +36,28 @@ export class ConsommationService {
     return query;
   }
 
-  async findByDate(searchDate: string) {
-    const date = new Date(searchDate);
-    const month: number = date.getMonth() + 1;
-    const year: number = date.getFullYear();
-    const startDate: Date = new Date(year, month - 1, 1);
-    const endDate: Date = new Date(year, month, 0);
+  async findByDate(year: number, month: number) {
+    const start = new Date(year, month - 1, 1);
+    const end = new Date(year, month, 0, 23, 59, 59, 999);
     return this.consoModel.aggregate([
       {
         $match: {
           date: {
-            $gte: startDate,
-            $lt: endDate,
+            $gte: start,
+            $lt: end,
           },
         },
       },
     ]);
+  }
+
+  async updateConsommationById(consoId: string, update: UpdateConsommationDto) {
+    const updateConso = await this.consoModel
+      .findByIdAndUpdate(consoId, update, { new: true })
+      .exec();
+    if (!updateConso) {
+      throw new NotFoundException('Le Numero de la consommation est incorrect');
+    }
+    return updateConso;
   }
 }

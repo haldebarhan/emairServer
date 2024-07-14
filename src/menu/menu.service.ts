@@ -52,4 +52,34 @@ export class MenuService {
     const query = await this.menuModel.findByIdAndDelete(menuId).exec();
     if (!query) throw new NotFoundException('menu non trouvé');
   }
+
+  async findMenuByDay(queryDay: string) {
+    const query = await this.menuModel
+      .findOne({
+        jour: queryDay,
+      })
+      .populate({
+        path: 'petit_dejeuner',
+        populate: [{ path: 'ingredients.denree' }],
+      })
+      .populate({
+        path: 'hors_doeuvre',
+        populate: [{ path: 'ingredients.denree' }],
+      })
+      .populate({
+        path: 'dejeuner',
+        populate: [{ path: 'ingredients.denree' }],
+      })
+      .populate({
+        path: 'dessert',
+        populate: [{ path: 'ingredients.denree' }],
+      })
+      .populate({
+        path: 'diner',
+        populate: [{ path: 'ingredients.denree' }],
+      })
+      .exec();
+
+    return query;
+  }
 }
