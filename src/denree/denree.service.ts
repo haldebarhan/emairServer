@@ -38,14 +38,7 @@ export class DenreeService {
   }
   async updateDenree(denreeId: string, updateDenreeDto: UpdateDenreeDto) {
     const updatedUser = await this.denreeModel
-      .findByIdAndUpdate(
-        denreeId,
-        {
-          produit: updateDenreeDto.produit,
-          mesure: updateDenreeDto.mesure,
-        },
-        { new: true },
-      )
+      .findByIdAndUpdate(denreeId, updateDenreeDto, { new: true })
       .exec();
     if (!updatedUser) {
       throw new NotFoundException(`User with ID ${denreeId} not found`);
@@ -61,5 +54,4 @@ export class DenreeService {
       );
     }
   }
-
 }

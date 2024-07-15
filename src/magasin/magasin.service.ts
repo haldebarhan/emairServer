@@ -31,6 +31,47 @@ export class MagasinService {
     return query;
   }
 
+  async updateStockByConso(
+    month: number,
+    year: number,
+    data: { produit: string; quantite: number }[],
+  ) {
+    const startDate = new Date(year, month - 1, 1);
+    const magasin = await this.MagModel.findOne({
+      date: startDate,
+    })
+      .populate('stock.denree')
+      .exec();
+
+    const updates = data.map((denree) => {
+      const stockItem: any = magasin.stock.find(
+        (item) => item.denree.produit == denree.produit,
+      );
+      const newConso =
+        denree.quantite !== undefined
+          ? stockItem.conso + denree.quantite
+          : stockItem.conso;
+      const newBalance = stockItem.balance - newConso;
+      return {
+        updateOne: {
+          filter: {
+            _id: magasin._id,
+            'stock.denree': stockItem.denree._id,
+          },
+          update: {
+            $set: {
+              'stock.$.conso': newConso,
+              'stock.$.balance': newBalance,
+            },
+          },
+        },
+      };
+    });
+
+    const result = await this.MagModel.bulkWrite(updates);
+    return result;
+  }
+
   async updateStockBySupply(data: IAppro) {
     const magasin = await this.MagModel.findById(data.magasin)
       .populate('stock.denree')
@@ -100,16 +141,4 @@ export class MagasinService {
     }
   }
 
-  // findDenree(
-  //   stock: {
-  //     denree: Denree;
-  //     quantite: Number;
-  //     conso: Number;
-  //     appro: Number;
-  //     balance: Number;
-  //   }[], searched: string
-  // ) {
-  //   const finded = stock.find(article => article.denree.produit == searched)
-  //   return finded
-  // }
 }

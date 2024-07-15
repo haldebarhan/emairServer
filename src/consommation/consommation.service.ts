@@ -60,4 +60,30 @@ export class ConsommationService {
     }
     return updateConso;
   }
+
+  async emitReport(id: string) {
+    const report = await this.consoModel
+      .findById(id)
+      .populate({
+        path: 'menu',
+        populate: [
+          { path: 'petit_dejeuner' },
+          { path: 'dejeuner' },
+          { path: 'hors_doeuvre' },
+          { path: 'dessert' },
+          { path: 'diner' },
+        ],
+      })
+      .exec();
+    return report;
+  }
+  async deleteConso(id: string) {
+    const result = await this.consoModel.findByIdAndDelete(id).exec();
+    if (!result) throw new NotFoundException("Le rapport n'existe pas ");
+  }
+
+  async updateReport(id: string){
+    const query = this.consoModel.findByIdAndUpdate(id, {transmit: true}, {new: true}).exec()
+    return query
+  }
 }
