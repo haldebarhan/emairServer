@@ -7,7 +7,7 @@ export type ConsommationDocument = mongoose.HydratedDocument<Consommation>;
 
 @Schema()
 export class Consommation {
-  @Prop({ type: Date })
+  @Prop({ type: Date, unique: true })
   date: Date;
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Menu' })
   menu: Menu;

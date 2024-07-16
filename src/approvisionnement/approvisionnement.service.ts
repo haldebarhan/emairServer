@@ -15,4 +15,26 @@ export class ApprovisionnementService {
     const query = new this.approModel(data);
     return query.save();
   }
+
+  async fiterSupplies(year: number, month: number) {
+    const startDate = new Date(year, month - 1, 1);
+    const endDate = new Date(year, month, 0, 23, 59, 59, 999);
+    const query = await this.approModel
+      .find({
+        date: {
+          $gte: startDate,
+          $lte: endDate,
+        },
+      })
+      .populate({
+        path: 'produits',
+        populate: [{path: 'denree'}]
+      })
+      .populate({
+        path: 'produits.denree',
+        populate: [{path: 'mesure'}]
+      })
+      .exec();
+    return query;
+  }
 }

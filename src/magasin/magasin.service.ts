@@ -95,7 +95,7 @@ export class MagasinService {
       const newBalance = newAppro - stockItem.conso;
       return {
         updateOne: {
-          filter: { _id: magasin._id, 'stock.denree': stock.denreeId },
+          filter: { _id: magasin._id, 'stock.denree': stock.denree },
           update: {
             $set: {
               'stock.$.appro': newAppro,

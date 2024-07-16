@@ -13,16 +13,18 @@ export class Approvisionnement {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Magasin' })
   magasin: Magasin;
 
-  @Prop({
-    denree: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Denree',
-      required: true,
+  @Prop([
+    {
+      denree: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Denree',
+        required: true,
+      },
+      quantite: { type: Number, required: true },
+      denreeName: { type: String, required: true },
     },
-    quantite: { type: Number, required: true },
-    denreeName: { type: String, required: true },
-  })
-  produits: { denree: Denree; quantite: Number; denreeName: String }[];
+  ])
+  produits: { denree: Denree; quantite: number; denreeName: string }[];
 }
 
 export const ApproSchema = SchemaFactory.createForClass(Approvisionnement);
