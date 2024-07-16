@@ -12,9 +12,10 @@ import { ConsommationModule } from './consommation/consommation.module';
 import { ConversionUnitModule } from './conversion-unit/conversion-unit.module';
 import { ApprovisionnementModule } from './approvisionnement/approvisionnement.module';
 import { DailyOutputModule } from './daily-output/daily-output.module';
+import { SurprimeModule } from './surprime/surprime.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule, ApprovisionnementModule, DailyOutputModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule, ApprovisionnementModule, DailyOutputModule, SurprimeModule],
   controllers: [AppController],
   providers: [AppService],
 })
