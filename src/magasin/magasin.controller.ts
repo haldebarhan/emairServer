@@ -3,6 +3,7 @@ import { MagasinService } from './magasin.service';
 import { CreateMagasinDto } from './dto/create-magasin.dto';
 import { Magasin } from 'src/schemas/magasin.schema';
 import { DenreeService } from 'src/denree/denree.service';
+import { getNextMonth } from 'src/helpers/next-month.helper';
 
 @Controller('magasin')
 export class MagasinController {
@@ -13,25 +14,43 @@ export class MagasinController {
 
   @Post()
   async create(@Body() body: { year: string; month: string }) {
-    const results = await this.magService.findAll();
-    if (results.length == 0) {
+    const result = await this.magService.findAll();
+    if (!result) {
       const date = new Date(`${body.year}-${body.month}-01T00:00:00Z`);
       const denrees = await this.denreeService.findAll();
       const stock = denrees.map((denree: any) => {
         return { denree: denree._id };
       });
       const data: CreateMagasinDto = { date, stock };
-      const result = await this.magService.create(data);
+      const magasin = await this.magService.create(data);
+      return magasin;
+    } else {
+      return result;
+    }
+  }
+
+  @Post(':id')
+  async nextMonth(@Param('id') id: string, @Body() data: any) {
+    const magasin = await this.magService.findOne();
+    if (magasin) {
+      const denrees = await this.denreeService.findAll()
+      const nexMonthStock = magasin.stock.map((denree) => {
+        const filter: any = denrees.find(d => d.produit === denree.denree.produit)
+        return { denree: filter._id, quantite: denree.balance, balance: denree.balance };
+      });
+      const date = getNextMonth(magasin.date.toISOString());
+      const formatDate = new Date(date);
+      const data = { date: formatDate, stock: nexMonthStock };
+      const result = await this.magService.nextMonth(data);
       return result;
     }
   }
 
   @Get()
   async findAll() {
-    const results = await this.magService.findAll();
-    if (results.length != 0) {
-      const result = results[0];
-      const stock = result.stock.map((denree) => {
+    const result = await this.magService.findOne();
+    if (result) {
+      const stock = result.stock.map((denree: any) => {
         return {
           produit: denree.denree.produit,
           quantite: denree.quantite,
@@ -39,12 +58,14 @@ export class MagasinController {
           appro: denree.appro,
           balance: denree.balance,
           prix: denree.denree.pu,
+          id: denree.denree._id,
         };
       });
       const data = { id: result._id, date: result.date, stock: stock };
       return data;
+      // return {message: 'ok server'}
     } else {
-      return results;
+      return null;
     }
   }
 

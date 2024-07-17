@@ -5,6 +5,7 @@ import { Magasin } from 'src/schemas/magasin.schema';
 import { CreateMagasinDto } from './dto/create-magasin.dto';
 import { IAppro } from 'src/models/Approvisionnement';
 import { Denree } from 'src/schemas/denree.schema';
+import { getNextMonth } from 'src/helpers/next-month.helper';
 
 @Injectable()
 export class MagasinService {
@@ -13,6 +14,19 @@ export class MagasinService {
   async create(createMagasinDto: CreateMagasinDto) {
     const createMag = new this.MagModel(createMagasinDto);
     return createMag.save();
+  }
+
+  async nextMonth(data: CreateMagasinDto) {
+    const query = new this.MagModel(data);
+    return query.save();
+  }
+
+  async findOne() {
+    const query = await this.MagModel.findOne()
+      .sort({ date: -1 })
+      .populate('stock.denree')
+      .exec();
+    return query;
   }
 
   async findAll() {
@@ -140,5 +154,4 @@ export class MagasinService {
         return data.balance;
     }
   }
-
 }
