@@ -16,7 +16,7 @@ export class MonthlyStatusService {
   }
 
   async findAll() {
-    const query = this.monthlyModel.find().exec();
+    const query = this.monthlyModel.find().sort({ date: -1 }).exec();
     return query;
   }
 
@@ -24,4 +24,5 @@ export class MonthlyStatusService {
     const query = this.monthlyModel.findById(id).exec();
     return query;
   }
+
 }
