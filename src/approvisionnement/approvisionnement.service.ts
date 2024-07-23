@@ -28,12 +28,30 @@ export class ApprovisionnementService {
       })
       .populate({
         path: 'produits',
-        populate: [{path: 'denree'}]
+        populate: [{ path: 'denree' }],
       })
       .populate({
         path: 'produits.denree',
-        populate: [{path: 'mesure'}]
+        populate: [{ path: 'mesure' }],
       })
+      .exec();
+    return query;
+  }
+
+  async filterByMagId(magId: string) {
+    const query = await this.approModel
+      .find({
+        magasin: magId,
+      })
+      .populate({
+        path: 'produits',
+        populate: [{ path: 'denree' }],
+      })
+      .populate({
+        path: 'produits.denree',
+        populate: [{ path: 'mesure' }],
+      })
+      .sort({ date: -1 })
       .exec();
     return query;
   }

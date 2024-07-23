@@ -29,6 +29,12 @@ export class ApprovisionnementController {
     @Param('month') month: number,
   ) {
     const result = await this.approService.fiterSupplies(year, month);
-    return result
+    return result;
+  }
+
+  @Get(':id')
+  async filterByMagId(@Param('id') id: string) {
+    const results  = await this.approService.filterByMagId(id)
+    return results
   }
 }
