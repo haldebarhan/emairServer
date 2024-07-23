@@ -21,6 +21,18 @@ export class MagasinService {
     return query.save();
   }
 
+  async findOneByDate(datStr: string) {
+    const date = new Date(datStr);
+    const query = await this.MagModel.findOne({
+      date: date,
+    })
+      .sort({ date: -1 })
+      .populate('stock.denree')
+      .limit(1)
+      .exec();
+    return query;
+  }
+
   async findOne() {
     const query = await this.MagModel.findOne()
       .sort({ date: -1 })

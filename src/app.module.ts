@@ -14,9 +14,10 @@ import { ApprovisionnementModule } from './approvisionnement/approvisionnement.m
 import { DailyOutputModule } from './daily-output/daily-output.module';
 import { SurprimeModule } from './surprime/surprime.module';
 import { DiversModule } from './divers/divers.module';
+import { MonthlyStatusModule } from './monthly-status/monthly-status.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule, ApprovisionnementModule, DailyOutputModule, SurprimeModule, DiversModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule, ApprovisionnementModule, DailyOutputModule, SurprimeModule, DiversModule, MonthlyStatusModule],
   controllers: [AppController],
   providers: [AppService],
 })

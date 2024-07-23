@@ -10,5 +10,6 @@ import { Divers, DiversSchema } from 'src/schemas/divers.schema';
   imports: [
     MongooseModule.forFeature([{ name: Divers.name, schema: DiversSchema }]),
   ],
+  exports: [DiversService]
 })
 export class DiversModule {}

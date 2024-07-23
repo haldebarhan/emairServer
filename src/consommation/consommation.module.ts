@@ -19,7 +19,8 @@ import { MagasinModule } from 'src/magasin/magasin.module';
     ]),
     DenreeModule,
     DailyOutputModule,
-    MagasinModule
+    MagasinModule,
   ],
+  exports: [ConsommationService]
 })
 export class ConsommationModule {}
