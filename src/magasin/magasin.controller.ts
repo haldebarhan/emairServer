@@ -14,7 +14,7 @@ export class MagasinController {
 
   @Post()
   async create(@Body() body: { year: string; month: string }) {
-    const result = await this.magService.findAll();
+    const result = await this.magService.findOne();
     if (!result) {
       const date = new Date(`${body.year}-${body.month}-01T00:00:00Z`);
       const denrees = await this.denreeService.findAll();

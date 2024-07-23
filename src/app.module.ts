@@ -20,7 +20,7 @@ import { join } from 'path';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/ordiDB'),
+    MongooseModule.forRoot('mongodb://localhost/test'),
     MagasinModule,
     MesureModule,
     DenreeModule,
@@ -35,7 +35,7 @@ import { join } from 'path';
     DiversModule,
     MonthlyStatusModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public/dist/ang-test/browser')
+      rootPath: join(__dirname, '..', 'public/ang-test/browser')
     })
   ],
   controllers: [AppController],
