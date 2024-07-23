@@ -15,9 +15,29 @@ import { DailyOutputModule } from './daily-output/daily-output.module';
 import { SurprimeModule } from './surprime/surprime.module';
 import { DiversModule } from './divers/divers.module';
 import { MonthlyStatusModule } from './monthly-status/monthly-status.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/ordiDB'), MagasinModule, MesureModule, DenreeModule, UniteModule, MenuModule, RecetteModule, ConsommationModule, ConversionUnitModule, ApprovisionnementModule, DailyOutputModule, SurprimeModule, DiversModule, MonthlyStatusModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/ordiDB'),
+    MagasinModule,
+    MesureModule,
+    DenreeModule,
+    UniteModule,
+    MenuModule,
+    RecetteModule,
+    ConsommationModule,
+    ConversionUnitModule,
+    ApprovisionnementModule,
+    DailyOutputModule,
+    SurprimeModule,
+    DiversModule,
+    MonthlyStatusModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public/dist/ang-test/browser')
+    })
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -11,7 +11,8 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type, Accept',
   });
 
-  app.useGlobalFilters(new MongoExceptionFilter())
+  app.useGlobalFilters(new MongoExceptionFilter());
+
   await app.listen(3000);
 }
 bootstrap();
