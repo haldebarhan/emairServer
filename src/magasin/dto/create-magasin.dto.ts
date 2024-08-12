@@ -1,6 +1,6 @@
 export class CreateMagasinDto {
   date: Date;
-  stock: {
+  stock?: {
     denree: string;
     quantite?: number;
     conso?: number;

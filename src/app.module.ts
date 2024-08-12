@@ -17,10 +17,11 @@ import { DiversModule } from './divers/divers.module';
 import { MonthlyStatusModule } from './monthly-status/monthly-status.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { MonthlyTableModule } from './monthly-table/monthly-table.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/mess'),
+    MongooseModule.forRoot('mongodb://localhost/ordiDB'),
     MagasinModule,
     MesureModule,
     DenreeModule,
@@ -34,6 +35,7 @@ import { join } from 'path';
     SurprimeModule,
     DiversModule,
     MonthlyStatusModule,
+    MonthlyTableModule,
     // ServeStaticModule.forRoot({
     //   rootPath: join(__dirname, '..', 'public/ang-test/browser')
     // })

@@ -4,12 +4,18 @@ import { CreateMagasinDto } from './dto/create-magasin.dto';
 import { Magasin } from 'src/schemas/magasin.schema';
 import { DenreeService } from 'src/denree/denree.service';
 import { getNextMonth } from 'src/helpers/next-month.helper';
+import { MonthlyTableService } from 'src/monthly-table/monthly-table.service';
+import { UniteService } from 'src/unite/unite.service';
+import { getDayInMonth } from 'src/helpers/dayInmonth.helper';
+import { CreateMonthlyTableDto } from 'src/monthly-table/dto/create-monthlyTable.dto';
 
 @Controller('magasin')
 export class MagasinController {
   constructor(
     private readonly magService: MagasinService,
     private readonly denreeService: DenreeService,
+    private readonly monthlyTable: MonthlyTableService,
+    private readonly uniteService: UniteService,
   ) {}
 
   @Post()
@@ -17,12 +23,35 @@ export class MagasinController {
     const result = await this.magService.findOne();
     if (!result) {
       const date = new Date(`${body.year}-${body.month}-01T00:00:00Z`);
-      const denrees = await this.denreeService.findAll();
-      const stock = denrees.map((denree: any) => {
-        return { denree: denree._id };
-      });
-      const data: CreateMagasinDto = { date, stock };
+      const data: CreateMagasinDto = { date };
       const magasin = await this.magService.create(data);
+      const units = await this.uniteService.findAll();
+      const totalDay = getDayInMonth(+body.month, +body.year);
+      const unites = units.map((unite) => {
+        return {
+          nom: unite.nom,
+          matin: Array(totalDay).fill(''),
+          midi: Array(totalDay).fill(''),
+          soir: Array(totalDay).fill(''),
+          totalMatin: 0,
+          totalMidi: 0,
+          totalSoir: 0,
+        };
+      });
+      let totalMatin = Array(totalDay).fill('');
+      let totalMidi = Array(totalDay).fill('');
+      let totalSoir = Array(totalDay).fill('');
+      let totalRow = Array(totalDay).fill(0);
+
+      const tableData: CreateMonthlyTableDto = {
+        magasin: magasin._id.toString(),
+        unites,
+        totalMatin,
+        totalMidi,
+        totalSoir,
+        totalRow,
+      };
+      await this.monthlyTable.generateTable(tableData);
       return magasin;
     } else {
       return result;

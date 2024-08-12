@@ -102,43 +102,37 @@ export class MagasinService {
     const magasin = await this.MagModel.findById(data.magasin)
       .populate('stock.denree')
       .exec();
+
     if (!magasin) {
       throw new NotFoundException(`Magasin with ID ${data.magasin} not found`);
     }
-    const updates = data.produits.map((stock) => {
-      const stockItem = magasin.stock.find(
-        (item) => item.denree.produit == stock.denreeName,
+
+    data.produits.forEach((stock) => {
+      let stockItem = magasin.stock.find(
+        (item) => item.denree.produit === stock.denree.produit,
       );
+
       if (!stockItem) {
-        throw new NotFoundException(
-          `Denree with ID ${stock.denreeName} not found in magasin`,
-        );
+        stockItem = {
+          denree: stock.denree,
+          quantite: stock.quantite,
+          conso: 0,
+          appro: stock.quantite,
+          balance: stock.quantite,
+        };
+        magasin.stock.push(stockItem);
+      } else {
+        const newAppro =
+          stock.quantite !== undefined
+            ? stockItem.appro + stock.quantite
+            : stockItem.appro;
+        const newBalance = newAppro - stockItem.conso;
+        stockItem.appro = newAppro;
+        stockItem.balance = newBalance;
       }
-      const newAppro =
-        stock.quantite !== undefined
-          ? stockItem.appro + stock.quantite
-          : stockItem.appro;
-      const newBalance = newAppro - stockItem.conso;
-      return {
-        updateOne: {
-          filter: { _id: magasin._id, 'stock.denree': stock.denree },
-          update: {
-            $set: {
-              'stock.$.appro': newAppro,
-              'stock.$.balance': newBalance,
-            },
-          },
-        },
-      };
     });
 
-    const result = await this.MagModel.bulkWrite(updates);
-    if (result.modifiedCount === 0) {
-      throw new NotFoundException(
-        `Magasin with ID ${magasin._id} or Denree(s) not found`,
-      );
-    }
-
+    const result = await magasin.save();
     return result;
   }
 

@@ -8,5 +8,6 @@ import { Unite, UniteSchema } from 'src/schemas/unite.schema';
   controllers: [UniteController],
   providers: [UniteService],
   imports: [MongooseModule.forFeature([{name: Unite.name, schema: UniteSchema}])],
+  exports: [UniteService]
 })
 export class UniteModule {}

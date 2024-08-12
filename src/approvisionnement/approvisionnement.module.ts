@@ -7,6 +7,7 @@ import {
   Approvisionnement,
 } from 'src/schemas/approvisionnement.schema';
 import { MagasinModule } from 'src/magasin/magasin.module';
+import { DenreeModule } from 'src/denree/denree.module';
 
 @Module({
   controllers: [ApprovisionnementController],
@@ -15,7 +16,8 @@ import { MagasinModule } from 'src/magasin/magasin.module';
     MongooseModule.forFeature([
       { name: Approvisionnement.name, schema: ApproSchema },
     ]),
-    MagasinModule
+    MagasinModule,
+    DenreeModule
   ],
 })
 export class ApprovisionnementModule {}
