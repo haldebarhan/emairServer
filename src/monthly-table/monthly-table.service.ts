@@ -19,6 +19,7 @@ export class MonthlyTableService {
   async findOneById(magasinId: string) {
     const result = await this.monthlyTableModel
       .findOne({ magasin: magasinId })
+      .populate('magasin')
       .exec();
     return result;
   }
@@ -31,5 +32,14 @@ export class MonthlyTableService {
       throw new NotFoundException('Erreur rencontrée');
     }
     return update;
+  }
+
+  async getTableMagData(tableId: string) {
+    const result = await this.monthlyTableModel
+      .findById(tableId)
+      .populate('magasin')
+      .exec();
+
+    return result;
   }
 }

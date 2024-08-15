@@ -18,6 +18,7 @@ import { MonthlyStatusModule } from './monthly-status/monthly-status.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MonthlyTableModule } from './monthly-table/monthly-table.module';
+import { OutingBookletModule } from './outing-booklet/outing-booklet.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { MonthlyTableModule } from './monthly-table/monthly-table.module';
     DiversModule,
     MonthlyStatusModule,
     MonthlyTableModule,
+    OutingBookletModule,
     // ServeStaticModule.forRoot({
     //   rootPath: join(__dirname, '..', 'public/ang-test/browser')
     // })

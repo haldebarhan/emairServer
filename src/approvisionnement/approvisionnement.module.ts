@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { ApprovisionnementController } from './approvisionnement.controller';
 import { ApprovisionnementService } from './approvisionnement.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -16,8 +16,9 @@ import { DenreeModule } from 'src/denree/denree.module';
     MongooseModule.forFeature([
       { name: Approvisionnement.name, schema: ApproSchema },
     ]),
-    MagasinModule,
-    DenreeModule
+    forwardRef(() => MagasinModule),
+    forwardRef(() => DenreeModule),
   ],
+  exports: [ApprovisionnementService],
 })
 export class ApprovisionnementModule {}

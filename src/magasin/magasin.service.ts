@@ -58,14 +58,10 @@ export class MagasinService {
   }
 
   async updateStockByConso(
-    month: number,
-    year: number,
+    magasinId: string,
     data: { produit: string; quantite: number }[],
   ) {
-    const startDate = new Date(year, month - 1, 1);
-    const magasin = await this.MagModel.findOne({
-      date: startDate,
-    })
+    const magasin = await this.MagModel.findById(magasinId)
       .populate('stock.denree')
       .exec();
 
@@ -73,11 +69,12 @@ export class MagasinService {
       const stockItem: any = magasin.stock.find(
         (item) => item.denree.produit == denree.produit,
       );
+      if(!stockItem || stockItem.balance < denree.quantite) throw new NotFoundException(`Une recette contient la denree ${denree.produit} qui n'est pas en stock`)
       const newConso =
         denree.quantite !== undefined
-          ? stockItem.conso + denree.quantite
-          : stockItem.conso;
-      const newBalance = stockItem.balance - newConso;
+          ? +stockItem.conso + +denree.quantite
+          : +stockItem.conso;
+      const newBalance = +stockItem.balance - denree.quantite;
       return {
         updateOne: {
           filter: {
@@ -94,6 +91,40 @@ export class MagasinService {
       };
     });
 
+    const result = await this.MagModel.bulkWrite(updates);
+    return result;
+  }
+
+  async restoreStock(
+    magasinId: string,
+    data: { produit: string; quantite: number }[],
+  ) {
+    const magasin = await this.MagModel.findById(magasinId)
+      .populate('stock.denree')
+      .exec();
+
+    const updates = data.map((denree) => {
+      const stockItem: any = magasin.stock.find(
+        (item) => item.denree.produit === denree.produit,
+      );
+      const newConso = stockItem.conso - denree.quantite;
+      const newBalance = stockItem.balance + denree.quantite;
+
+      return {
+        updateOne: {
+          filter: {
+            _id: magasin._id,
+            'stock.denree': stockItem.denree._id,
+          },
+          update: {
+            $set: {
+              'stock.$.conso': newConso,
+              'stock.$.balance': newBalance,
+            },
+          },
+        },
+      };
+    });
     const result = await this.MagModel.bulkWrite(updates);
     return result;
   }
@@ -115,7 +146,7 @@ export class MagasinService {
       if (!stockItem) {
         stockItem = {
           denree: stock.denree,
-          quantite: stock.quantite,
+          quantite: 0,
           conso: 0,
           appro: stock.quantite,
           balance: stock.quantite,

@@ -15,7 +15,7 @@ export class ApprovisionnementController {
 
   @Post()
   async create(@Body() createApproDto: CreateApproDto) {
-    // await this.approService.createAppro(createApproDto);
+    await this.approService.createAppro(createApproDto);
     const denrees = await this.denreeService.findAll();
     const products = [];
     createApproDto.produits.forEach((p) => {

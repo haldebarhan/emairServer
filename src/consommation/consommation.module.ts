@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { ConsommationController } from './consommation.controller';
 import { ConsommationService } from './consommation.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -9,6 +9,9 @@ import {
 import { DenreeModule } from 'src/denree/denree.module';
 import { DailyOutputModule } from 'src/daily-output/daily-output.module';
 import { MagasinModule } from 'src/magasin/magasin.module';
+import { MenuModule } from 'src/menu/menu.module';
+import { OutingBookletModule } from 'src/outing-booklet/outing-booklet.module';
+import { ApprovisionnementModule } from 'src/approvisionnement/approvisionnement.module';
 
 @Module({
   controllers: [ConsommationController],
@@ -17,10 +20,13 @@ import { MagasinModule } from 'src/magasin/magasin.module';
     MongooseModule.forFeature([
       { name: Consommation.name, schema: ConsommationSchema },
     ]),
-    DenreeModule,
+    forwardRef(() => DenreeModule),
     DailyOutputModule,
-    MagasinModule,
+    forwardRef(() => MagasinModule),
+    forwardRef(() => MenuModule),
+    OutingBookletModule,
+    forwardRef(() => ApprovisionnementModule)
   ],
-  exports: [ConsommationService]
+  exports: [ConsommationService],
 })
 export class ConsommationModule {}

@@ -10,5 +10,6 @@ import { Menu, MenuSchema } from 'src/schemas/menu.schema';
   imports: [
     MongooseModule.forFeature([{ name: Menu.name, schema: MenuSchema }]),
   ],
+  exports: [MenuService]
 })
 export class MenuModule {}

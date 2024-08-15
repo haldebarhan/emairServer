@@ -55,4 +55,27 @@ export class ApprovisionnementService {
       .exec();
     return query;
   }
+
+  async filterbyDate(date: Date) {
+    const combined: { produit: string; quantite: number }[] = [];
+    const query = await this.approModel.find({ date: date }).exec();
+    if (query) {
+      query.forEach((data) => {
+        data.produits.forEach((produit) => {
+          const finded = combined.find(
+            (find) => find.produit === produit.denreeName,
+          );
+          if (finded) {
+            finded.quantite += produit.quantite;
+          } else {
+            combined.push({
+              produit: produit.denreeName,
+              quantite: produit.quantite,
+            });
+          }
+        });
+      });
+    }
+    return combined;
+  }
 }
