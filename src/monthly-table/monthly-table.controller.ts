@@ -97,7 +97,7 @@ export class MonthlyTableController {
         }
       }
 
-      await this.consoService.manageData(linesInvolved);
+      await this.consoService.manageTableData(linesInvolved);
       return result;
     } catch (err) {
       if (err instanceof NotFoundException) {

@@ -142,55 +142,7 @@ export class ConsommationService {
     return data;
   }
 
-  // async manageData(data: CreateConsommationDto[]) {
-  //   data.forEach(async (item, index) => {
-  //     const result = await this.filterByDate(item.date);
-  //     const menuId = (
-  //       await this.menuService.findMenuByDay(item.jour)
-  //     )._id.toString();
-
-  //     if (!result) {
-  //       const createConso = await this.create({ ...item, menu: menuId });
-  //       const new_data = await this.collectData(createConso._id.toString());
-  //       await this.magasinService
-  //         .updateStockByConso(item.magasin, new_data)
-  //         .then(async () => {
-  //           const books = await this.createBook(item.magasin, item.date);
-  //           const booklet: CreateOutingBookletDto = {
-  //             date: item.date,
-  //             magasin: item.magasin,
-  //             total_matin: item.total_matin,
-  //             total_midi: item.total_midi,
-  //             total_soir: item.total_soir,
-  //             carnet: books,
-  //           };
-  //           await this.bookingService.create(booklet);
-  //         })
-  //         .catch(async (err: NotFoundException) => {
-  //           await this.deleteConso(createConso._id.toString());
-  //           throw new NotFoundException(
-  //             `Une recette contient la denree ${err.message} qui n'existe pas en stock. le rapport du jour ${index + 1} ne sera pas enregistré`,
-  //           );
-  //         });
-  //     } else {
-  //       if (
-  //         result.total_matin !== item.total_matin ||
-  //         result.total_midi !== item.total_midi ||
-  //         result.total_soir !== item.total_soir
-  //       ) {
-  //         const old_data = await this.collectData(result._id.toString());
-  //         // restaurer le stock
-  //         await this.magasinService.restoreStock(item.magasin, old_data);
-  //         // update
-  //         await this.update(result._id.toString(), { ...item, menu: menuId });
-  //         const new_data = await this.collectData(result._id.toString());
-  //         await this.magasinService.updateStockByConso(item.magasin, new_data);
-  //       }
-  //     }
-  //   });
-  // }
-
-  async manageData(data: CreateConsommationDto[]): Promise<void> {
+  async manageTableData(data: CreateConsommationDto[]): Promise<void> {
     const errors: { statusCode: number; message: string; error: string }[] = [];
 
     for (const [index, item] of data.entries()) {
@@ -208,17 +160,6 @@ export class ConsommationService {
 
           const newData = await this.collectData(createConsoId);
           await this.magasinService.updateStockByConso(item.magasin, newData);
-
-          const books = await this.createBook(item.magasin, item.date);
-          const booklet: CreateOutingBookletDto = {
-            date: item.date,
-            magasin: item.magasin,
-            total_matin: item.total_matin,
-            total_midi: item.total_midi,
-            total_soir: item.total_soir,
-            carnet: books,
-          };
-          await this.bookingService.create(booklet);
         } else {
           if (
             result.total_matin !== item.total_matin ||
@@ -230,21 +171,6 @@ export class ConsommationService {
             await this.update(result._id.toString(), { ...item, menu: menuId });
             const newData = await this.collectData(result._id.toString());
             await this.magasinService.updateStockByConso(item.magasin, newData);
-
-            const books = await this.createBook(item.magasin, item.date);
-            const bookId = (
-              await this.bookingService.filterByDate(item.date)
-            )._id.toString();
-
-            const booklet: UpdateOutingBookletDto = {
-              date: item.date,
-              magasin: item.magasin,
-              total_matin: item.total_matin,
-              total_midi: item.total_midi,
-              total_soir: item.total_soir,
-              carnet: books,
-            };
-            await this.bookingService.update(bookId, booklet);
           }
         }
       } catch (error) {

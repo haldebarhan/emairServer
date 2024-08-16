@@ -6,33 +6,32 @@ export type OutingBookletDocument = mongoose.HydratedDocument<OutingBooklet>;
 
 @Schema()
 export class OutingBooklet {
-  @Prop({ type: Date, unique: true })
-  date: Date;
-
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Magasin' })
   magasin: Magasin;
 
-  @Prop({ type: Number })
-  total_matin: number;
+  @Prop({ type: Array<Number> })
+  total_matin: number[];
 
-  @Prop({ type: Number })
-  total_midi: number;
+  @Prop({ type: Array<Number> })
+  total_midi: number[];
 
-  @Prop({ type: Number })
-  total_soir: number;
+  @Prop({ type: Array<Number> })
+  total_soir: number[];
 
   @Prop([
     {
       produit: { type: String },
-      conso: { type: Number },
-      appro: { type: Number },
+      appro: { type: Array<Number> },
+      conso: { type: Array<Number> },
+      balance: { type: Array<Number> },
       existant: { type: Number, default: 0 },
     },
   ])
   carnet: {
     produit: string;
-    conso: number;
-    appro: number;
+    appro: Array<number>;
+    conso: Array<number>;
+    balance: Array<number>;
     existant: number;
   }[];
 }

@@ -8,6 +8,7 @@ import {
 } from 'src/schemas/approvisionnement.schema';
 import { MagasinModule } from 'src/magasin/magasin.module';
 import { DenreeModule } from 'src/denree/denree.module';
+import { OutingBookletModule } from 'src/outing-booklet/outing-booklet.module';
 
 @Module({
   controllers: [ApprovisionnementController],
@@ -18,6 +19,7 @@ import { DenreeModule } from 'src/denree/denree.module';
     ]),
     forwardRef(() => MagasinModule),
     forwardRef(() => DenreeModule),
+    forwardRef(() => OutingBookletModule)
   ],
   exports: [ApprovisionnementService],
 })

@@ -1,18 +1,20 @@
 export class CreateOutingBookletDto {
-  date: Date;
-  
   magasin: string;
 
-  total_matin: number;
+  total_matin: Array<number>;
 
-  total_midi: number;
+  total_midi: Array<number>;
 
-  total_soir: number;
+  total_soir: Array<number>;
 
   carnet: {
     produit: string;
-    conso: number;
-    appro: number;
+    appro: Array<number>;
+    conso: Array<number>;
+    balance: Array<number>;
     existant: number;
+    d_appro: number;
+    d_conso: number;
+    d_balance: number;
   }[];
 }

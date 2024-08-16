@@ -26,10 +26,9 @@ export class OutingBookletService {
     return query;
   }
 
-  async getFiltered(magasinId: string) {
+  async getOneByMagId(magasinId: string) {
     const query = await this.outingModel
-      .find({ magasin: magasinId })
-      .sort({ date: -1 })
+      .findOne({ magasin: magasinId })
       .exec();
     return query;
   }
