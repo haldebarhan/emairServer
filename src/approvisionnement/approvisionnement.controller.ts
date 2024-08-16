@@ -56,33 +56,34 @@ export class ApprovisionnementController {
       );
       const dayInMonth = getDayInMonth(month + 1, year);
       const appro_date_index = getDay(createApproDto.date.toString());
-      const index = appro_date_index - 1
+      const index = appro_date_index - 1;
 
       appro_products.forEach((product) => {
         let find = booklet_products.find(
           (p) => p.produit == product.denreeName,
         );
         if (find) {
-          find.appro[index] += product.quantite
+          find.appro[index] += product.quantite;
+          find.balance[index] = find.appro[index] - find.conso[index];
         } else {
           find = {
             produit: product.denreeName,
             appro: Array<number>(dayInMonth).fill(0),
             conso: Array<number>(dayInMonth).fill(0),
             balance: Array<number>(dayInMonth).fill(0),
-            existant: 0
-          }
-          find.appro[index] += product.quantite
-          booklet_products.push(find)
+            existant: 0,
+          };
+          find.appro[index] += product.quantite;
+          booklet_products.push(find);
         }
       });
 
       const updates: UpdateOutingBookletDto = {
         magasin: magasin._id.toString(),
-        carnet: booklet_products
-      }
+        carnet: booklet_products,
+      };
 
-      await this.bookletService.update(booklet._id.toString(), updates)
+      await this.bookletService.update(booklet._id.toString(), updates);
     }
     return create;
   }
@@ -113,7 +114,16 @@ export class ApprovisionnementController {
     let total_matin: number[] = Array(dayInMonth).fill(0);
     let total_midi: number[] = Array(dayInMonth).fill(0);
     let total_soir: number[] = Array(dayInMonth).fill(0);
-    const carnet = magasin_stock.map((denree) => {
+    const carnet: {
+      produit: string;
+      appro: Array<number>;
+      conso: Array<number>;
+      balance: Array<number>;
+      existant: number;
+      d_appro: number;
+      d_conso: number;
+      d_balance: number;
+    }[] = magasin_stock.map((denree) => {
       const find = data.produits.find(
         (product) => product.denreeName == denree.denree.produit,
       );
@@ -132,7 +142,8 @@ export class ApprovisionnementController {
     for (const [_, item] of carnet.entries()) {
       item.appro[index] = item.d_appro;
       (item.conso[index] = item.d_conso),
-        (item.balance[index] = item.d_balance);
+        (item.balance[index] +=
+          item.existant + item.d_appro - item.conso[index]);
     }
 
     const outingBooklet_data: CreateOutingBookletDto = {

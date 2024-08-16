@@ -13,6 +13,9 @@ import { OutingBookletService } from 'src/outing-booklet/outing-booklet.service'
 import { ApprovisionnementService } from 'src/approvisionnement/approvisionnement.service';
 import { CreateOutingBookletDto } from 'src/outing-booklet/dto/create-outing-booklet.dto';
 import { UpdateOutingBookletDto } from 'src/outing-booklet/dto/update-outing-booklet.dto';
+import { getCurrentMonthAndYear } from 'src/helpers/getCurrentMonthAndYear';
+import { getDayInMonth } from 'src/helpers/dayInmonth.helper';
+import { getDay } from 'src/helpers/get-day';
 
 @Injectable()
 export class ConsommationService {
@@ -160,6 +163,15 @@ export class ConsommationService {
 
           const newData = await this.collectData(createConsoId);
           await this.magasinService.updateStockByConso(item.magasin, newData);
+
+          await this.updateBooklet(
+            item.magasin,
+            createConso.date.toString(),
+            newData,
+            item.total_matin,
+            item.total_midi,
+            item.total_soir,
+          );
         } else {
           if (
             result.total_matin !== item.total_matin ||
@@ -169,8 +181,22 @@ export class ConsommationService {
             const oldData = await this.collectData(result._id.toString());
             await this.magasinService.restoreStock(item.magasin, oldData);
             await this.update(result._id.toString(), { ...item, menu: menuId });
+            await this.restoreBooklet(
+              item.magasin,
+              result.date.toString(),
+              oldData,
+            );
             const newData = await this.collectData(result._id.toString());
             await this.magasinService.updateStockByConso(item.magasin, newData);
+
+            await this.updateBooklet(
+              item.magasin,
+              result.date.toString(),
+              newData,
+              result.total_matin,
+              result.total_midi,
+              item.total_soir,
+            );
           }
         }
       } catch (error) {
@@ -264,5 +290,94 @@ export class ConsommationService {
       };
     });
     return updates;
+  }
+
+  async updateBooklet(
+    magasinId: string,
+    createConsoDate: string,
+    data: {
+      produit: string;
+      quantite: number;
+    }[],
+    total_matin: number,
+    total_midi: number,
+    total_soir: number,
+  ) {
+    const booklet = await this.bookingService.getOneByMagId(magasinId);
+    const booklet_products = booklet.carnet;
+    const bookId = booklet._id.toString();
+
+    let booklet_total_matin = booklet.total_matin;
+    let booklet_total_midi = booklet.total_midi;
+    let booklet_total_soir = booklet.total_soir;
+
+    const created_conso_date = createConsoDate;
+    const conso_date_index = getDay(created_conso_date);
+    const index = conso_date_index - 1;
+
+    data.forEach((product) => {
+      const find = booklet_products.find((p) => p.produit == product.produit);
+      if (!find) throw new NotFoundException('');
+      find.conso[index] += product.quantite;
+      let last_balance: number = this.findLastBalance(find.balance, index);
+      find.balance[index] = last_balance - find.conso[index];
+    });
+    booklet_total_matin[index] = total_matin;
+    booklet_total_midi[index] = total_midi;
+    booklet_total_soir[index] = total_soir;
+
+    const update: UpdateOutingBookletDto = {
+      magasin: magasinId,
+      carnet: booklet_products,
+      total_matin: booklet_total_matin,
+      total_midi: booklet_total_midi,
+      total_soir: booklet_total_soir,
+    };
+
+    await this.bookingService.update(bookId, update);
+  }
+
+  async restoreBooklet(
+    magasinId: string,
+    createConsoDate: string,
+    data: {
+      produit: string;
+      quantite: number;
+    }[],
+  ) {
+    const booklet = await this.bookingService.getOneByMagId(magasinId);
+    const bookId = booklet._id.toString();
+    const booklet_products = booklet.carnet;
+
+    const created_conso_date = createConsoDate;
+    const conso_date_index = getDay(created_conso_date);
+    const index = conso_date_index - 1;
+    data.forEach((product) => {
+      const find = booklet_products.find((p) => p.produit == product.produit);
+      if (!find) throw new NotFoundException('');
+      find.conso[index] -= product.quantite;
+      find.balance[index] = 0;
+    });
+    const update: UpdateOutingBookletDto = {
+      magasin: magasinId,
+      carnet: booklet_products,
+    };
+    await this.bookingService.update(bookId, update);
+  }
+  
+  findLastBalance(table: Array<number>, index: number): number {
+    if (index < 0 || index >= table.length) {
+      return 0;
+    }
+
+    let last_balance = table[index];
+    while (index >= 0 && last_balance === 0) {
+      index--;
+      if (index >= 0) {
+        last_balance = table[index];
+      }
+    }
+
+    return last_balance;
   }
 }
