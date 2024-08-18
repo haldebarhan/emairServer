@@ -37,18 +37,8 @@ export class DiversService {
     return this.diversModel.findByIdAndDelete(id).exec();
   }
 
-  async filter(year: number, month: number) {
-    const startDate = new Date(year, month - 1, 1);
-    const endDate = new Date(year, month, 0, 23, 59, 59, 999);
-    const query = this.diversModel
-      .find({
-        date: {
-          $gte: startDate,
-          $lte: endDate,
-        },
-      })
-      .exec();
-
+  async filter(magasinId: string) {
+    const query = this.diversModel.find({magasin: magasinId}).exec()
     return query;
   }
 }

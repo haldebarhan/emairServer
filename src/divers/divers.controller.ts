@@ -10,14 +10,16 @@ import {
 import { DiversService } from './divers.service';
 import { CreateDiversDto } from './dto/create-divers.dto';
 import { UpdateDiversDto } from './dto/update-divers.dto';
+import { MagasinService } from 'src/magasin/magasin.service';
 
 @Controller('divers')
 export class DiversController {
-  constructor(private readonly diversService: DiversService) {}
+  constructor(private readonly diversService: DiversService, private readonly magService: MagasinService) {}
 
   @Post()
   async create(@Body() data: CreateDiversDto) {
-    const result = await this.diversService.create(data);
+    const magasin = (await this.magService.findOne())._id.toString()
+    const result = await this.diversService.create({...data, magasin});
     return result;
   }
 
@@ -27,9 +29,9 @@ export class DiversController {
     return results;
   }
 
-  @Get('/filter/:year/:month')
-  async filter(@Param('year') year: number, @Param('month') month: number) {
-    const results = await this.diversService.filter(year, month);
+  @Get('/filter/magasin/:id')
+  async filter(@Param('id') magasinId: string) {
+    const results = await this.diversService.filter(magasinId);
     return results;
   }
 
@@ -41,7 +43,8 @@ export class DiversController {
 
   @Patch(':id')
   async update(@Param('id') id: string, @Body() data: UpdateDiversDto) {
-    const result = await this.diversService.update(id, data);
+    const magasin = (await this.magService.findOne())._id.toString()
+    const result = await this.diversService.update(id, {...data, magasin});
     return result;
   }
 

@@ -16,6 +16,7 @@ import { UpdateOutingBookletDto } from 'src/outing-booklet/dto/update-outing-boo
 import { getCurrentMonthAndYear } from 'src/helpers/getCurrentMonthAndYear';
 import { getDayInMonth } from 'src/helpers/dayInmonth.helper';
 import { getDay } from 'src/helpers/get-day';
+import { findLastBalance } from 'src/helpers/last_balance';
 
 @Injectable()
 export class ConsommationService {
@@ -319,7 +320,7 @@ export class ConsommationService {
       const find = booklet_products.find((p) => p.produit == product.produit);
       if (!find) throw new NotFoundException('');
       find.conso[index] += product.quantite;
-      let last_balance: number = this.findLastBalance(find.balance, index);
+      let last_balance: number = findLastBalance(find.balance, index);
       find.balance[index] = last_balance - find.conso[index];
     });
     booklet_total_matin[index] = total_matin;
@@ -356,28 +357,12 @@ export class ConsommationService {
       const find = booklet_products.find((p) => p.produit == product.produit);
       if (!find) throw new NotFoundException('');
       find.conso[index] -= product.quantite;
-      find.balance[index] = 0;
+      find.balance[index] += product.quantite;
     });
     const update: UpdateOutingBookletDto = {
       magasin: magasinId,
       carnet: booklet_products,
     };
     await this.bookingService.update(bookId, update);
-  }
-  
-  findLastBalance(table: Array<number>, index: number): number {
-    if (index < 0 || index >= table.length) {
-      return 0;
-    }
-
-    let last_balance = table[index];
-    while (index >= 0 && last_balance === 0) {
-      index--;
-      if (index >= 0) {
-        last_balance = table[index];
-      }
-    }
-
-    return last_balance;
   }
 }

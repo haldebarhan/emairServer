@@ -10,6 +10,7 @@ import { getDayInMonth } from 'src/helpers/dayInmonth.helper';
 import { getDay } from 'src/helpers/get-day';
 import { CreateOutingBookletDto } from 'src/outing-booklet/dto/create-outing-booklet.dto';
 import { UpdateOutingBookletDto } from 'src/outing-booklet/dto/update-outing-booklet.dto';
+import { findLastBalance } from 'src/helpers/last_balance';
 
 @Controller('appro')
 export class ApprovisionnementController {
@@ -20,72 +21,100 @@ export class ApprovisionnementController {
     private readonly bookletService: OutingBookletService,
   ) {}
 
+
+  @Post('/fill')
+  async fillMag(@Body() data: {dateStr: string, magasin: string}){
+    const date = new Date(data.dateStr)
+    const denrees = await this.denreeService.findAll();
+    const products = denrees.map(denree => {
+      return {
+        denree: denree._id.toString(),
+        quantite: 2000,
+        denreeName: denree.produit
+      }
+    })
+    const fill: CreateApproDto = {
+      date: date,
+      magasin: data.magasin,
+      produits: products
+    }
+    await this.create(fill)
+    return {message: 'ok'}
+  }
+
+
   @Post()
   async create(@Body() createApproDto: CreateApproDto) {
-    await this.approService.createAppro(createApproDto);
-    const denrees = await this.denreeService.findAll();
-    const products = [];
-    createApproDto.produits.forEach((p) => {
-      const finded = denrees.find((d) => d.produit === p.denreeName);
-      products.push({
-        denree: finded,
-        quantite: p.quantite,
-        denreeId: p.denree,
+    try {
+      await this.approService.createAppro(createApproDto);
+      const denrees = await this.denreeService.findAll();
+      const products = [];
+      createApproDto.produits.forEach((p) => {
+        const finded = denrees.find((d) => d.produit === p.denreeName);
+        products.push({
+          denree: finded,
+          quantite: p.quantite,
+          denreeId: p.denree,
+        });
       });
-    });
-    const data: IAppro = {
-      date: createApproDto.date,
-      magasin: createApproDto.magasin,
-      produits: products,
-    };
-
-    const create = await this.magasinService.updateStockBySupply(data);
-    const booklet = await this.bookletService.getOneByMagId(
-      createApproDto.magasin,
-    );
-    const magasin = await this.magasinService.getOne(createApproDto.magasin);
-
-    if (!booklet) {
-      this.createBookData(createApproDto, magasin);
-    } else {
-      const booklet_products = booklet.carnet;
-      const appro_products = createApproDto.produits;
-      const magasin_date = magasin.date;
-      const { year, month } = getCurrentMonthAndYear(
-        magasin_date.toISOString(),
-      );
-      const dayInMonth = getDayInMonth(month + 1, year);
-      const appro_date_index = getDay(createApproDto.date.toString());
-      const index = appro_date_index - 1;
-
-      appro_products.forEach((product) => {
-        let find = booklet_products.find(
-          (p) => p.produit == product.denreeName,
-        );
-        if (find) {
-          find.appro[index] += product.quantite;
-          find.balance[index] = find.appro[index] - find.conso[index];
-        } else {
-          find = {
-            produit: product.denreeName,
-            appro: Array<number>(dayInMonth).fill(0),
-            conso: Array<number>(dayInMonth).fill(0),
-            balance: Array<number>(dayInMonth).fill(0),
-            existant: 0,
-          };
-          find.appro[index] += product.quantite;
-          booklet_products.push(find);
-        }
-      });
-
-      const updates: UpdateOutingBookletDto = {
-        magasin: magasin._id.toString(),
-        carnet: booklet_products,
+      const data: IAppro = {
+        date: createApproDto.date,
+        magasin: createApproDto.magasin,
+        produits: products,
       };
 
-      await this.bookletService.update(booklet._id.toString(), updates);
+      const create = await this.magasinService.updateStockBySupply(data);
+      const booklet = await this.bookletService.getOneByMagId(
+        createApproDto.magasin,
+      );
+      const magasin = await this.magasinService.getOne(createApproDto.magasin);
+
+      if (!booklet) {
+        await this.createBookData(createApproDto, magasin);
+      } else {
+        const booklet_products = booklet.carnet;
+        const appro_products = createApproDto.produits;
+        const magasin_date = magasin.date;
+        const { year, month } = getCurrentMonthAndYear(
+          magasin_date.toISOString(),
+        );
+        const dayInMonth = getDayInMonth(month + 1, year);
+        const appro_date_index = getDay(createApproDto.date.toString());
+        const index = appro_date_index - 1;
+
+        appro_products.forEach((product) => {
+          let find = booklet_products.find(
+            (p) => p.produit == product.denreeName,
+          );
+          if (find) {
+            find.appro[index] += product.quantite;
+            const last_balance: number = findLastBalance(find.balance, index);
+            find.balance[index] = find.appro[index] + last_balance;
+          } else {
+            find = {
+              produit: product.denreeName,
+              appro: Array<number>(dayInMonth).fill(0),
+              conso: Array<number>(dayInMonth).fill(0),
+              balance: Array<number>(dayInMonth).fill(0),
+              existant: 0,
+            };
+            find.appro[index] += product.quantite;
+            find.balance[index] += product.quantite
+            booklet_products.push(find);
+          }
+        });
+
+        const updates: UpdateOutingBookletDto = {
+          magasin: magasin._id.toString(),
+          carnet: booklet_products,
+        };
+
+        await this.bookletService.update(booklet._id.toString(), updates);
+      }
+      return create;
+    } catch (err) {
+      console.log(err);
     }
-    return create;
   }
 
   @Get('/data/:year/:month')
@@ -104,7 +133,6 @@ export class ApprovisionnementController {
   }
 
   async createBookData(data: CreateApproDto, magasin: any) {
-    // const magasin = await this.magasinService.getOne(data.magasin);
     let magasin_date = magasin.date;
     let magasin_stock = magasin.stock;
     const { year, month } = getCurrentMonthAndYear(magasin_date.toISOString());
@@ -123,7 +151,7 @@ export class ApprovisionnementController {
       d_appro: number;
       d_conso: number;
       d_balance: number;
-    }[] = magasin_stock.map((denree) => {
+    }[] = magasin_stock.map((denree: any) => {
       const find = data.produits.find(
         (product) => product.denreeName == denree.denree.produit,
       );

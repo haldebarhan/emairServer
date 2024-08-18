@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
+import { Magasin } from './magasin.schema';
 
 export type DiversDocument = mongoose.HydratedDocument<Divers>;
 
@@ -11,8 +12,8 @@ export class Divers {
   @Prop({ type: Number })
   montant: number;
 
-  @Prop({ type: Date })
-  date: Date;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Magasin' })
+  magasin: Magasin;
 }
 
 export const DiversSchema = SchemaFactory.createForClass(Divers);

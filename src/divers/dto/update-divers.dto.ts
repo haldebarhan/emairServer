@@ -1,5 +1,5 @@
 export class UpdateDiversDto {
-  date?: Date;
+  magasin?: string;
   montant?: number;
   libelle?: string;
 }
