@@ -1,5 +1,6 @@
 export class CreateDailyOutputDto {
   reportId: string;
+  magasin: string
   date: Date;
   pdej: string;
   dej: string;

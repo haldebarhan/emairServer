@@ -17,6 +17,10 @@ import { getCurrentMonthAndYear } from 'src/helpers/getCurrentMonthAndYear';
 import { getDayInMonth } from 'src/helpers/dayInmonth.helper';
 import { getDay } from 'src/helpers/get-day';
 import { findLastBalance } from 'src/helpers/last_balance';
+import { DailyOutputService } from 'src/daily-output/daily-output.service';
+import { CreateDailyOutputDto } from 'src/daily-output/dto/create-daily-output.dto';
+import { Denrees } from 'src/models/denrees';
+import { UpdateDailyOutputDto } from 'src/daily-output/dto/update-daily-output.dto';
 
 @Injectable()
 export class ConsommationService {
@@ -28,6 +32,7 @@ export class ConsommationService {
     private readonly magasinService: MagasinService,
     private readonly bookingService: OutingBookletService,
     private readonly approService: ApprovisionnementService,
+    private readonly dailyService: DailyOutputService,
   ) {}
 
   async createConsommation(createConsommationDto: CreateConsommationDto) {
@@ -154,9 +159,8 @@ export class ConsommationService {
 
       try {
         const result = await this.filterByDate(item.date);
-        const menuId = (
-          await this.menuService.findMenuByDay(item.jour)
-        )._id.toString();
+        const menu = await this.menuService.findMenuByDay(item.jour);
+        const menuId = menu._id.toString();
 
         if (!result) {
           const createConso = await this.create({ ...item, menu: menuId });
@@ -173,6 +177,23 @@ export class ConsommationService {
             item.total_midi,
             item.total_soir,
           );
+          const denrees = await this.outOfStoreFood(createConsoId);
+          const report: CreateDailyOutputDto = {
+            reportId: createConsoId,
+            magasin: item.magasin,
+            date: item.date,
+            pdej: menu.petit_dejeuner.nomRecette,
+            dej: menu.dejeuner.nomRecette,
+            hd: menu.hors_doeuvre.nomRecette,
+            des: menu.dessert.nomRecette,
+            din: menu.diner.nomRecette,
+            pdej_effect: item.total_matin,
+            dej_effect: item.total_midi,
+            din_effect: item.total_soir,
+            sorties: denrees,
+          };
+
+          await this.dailyService.Create(report);
         } else {
           if (
             result.total_matin !== item.total_matin ||
@@ -181,7 +202,10 @@ export class ConsommationService {
           ) {
             const oldData = await this.collectData(result._id.toString());
             await this.magasinService.restoreStock(item.magasin, oldData);
-            await this.update(result._id.toString(), { ...item, menu: menuId });
+            const new_result = await this.update(result._id.toString(), {
+              ...item,
+              menu: menuId,
+            });
             await this.restoreBooklet(
               item.magasin,
               result.date.toString(),
@@ -198,6 +222,17 @@ export class ConsommationService {
               result.total_midi,
               item.total_soir,
             );
+            const denrees = await this.outOfStoreFood(
+              new_result._id.toString(),
+            );
+            const report: UpdateDailyOutputDto = {
+              reportId: new_result._id.toString(),
+              pdej_effect: new_result.total_matin,
+              dej_effect: new_result.total_midi,
+              din_effect: new_result.total_soir,
+              sorties: denrees,
+            };
+            await this.dailyService.update(new_result._id.toString(), report);
           }
         }
       } catch (error) {
@@ -205,6 +240,7 @@ export class ConsommationService {
           if (createConsoId) {
             // Supprimer la consommation si une erreur survient après sa création
             await this.deleteConso(createConsoId);
+            await this.dailyService.delete(createConsoId);
           }
           errors.push({
             statusCode: 404,
@@ -240,6 +276,17 @@ export class ConsommationService {
   }
 
   async collectData(id: string) {
+    const denrees = await this.outOfStoreFood(id);
+    const updates = denrees.map((item) => {
+      return {
+        produit: `${item.produit.toString()}`,
+        quantite: +item.matin + +item.soir,
+      };
+    });
+    return updates;
+  }
+
+  async outOfStoreFood(id: string): Promise<Denrees[]> {
     const report = await this.emitReport(id.toString());
     const petit_dejeuner = await this.getMealData(report, 'petit_dejeuner');
     const hors_doeuvre = await this.getMealData(report, 'hors_doeuvre');
@@ -277,20 +324,14 @@ export class ConsommationService {
     const sorties = Calculation.getTotalFoods();
     const denrees = sorties.map((item: any) => {
       return {
-        produit: item.produit,
-        matin: item.matin,
-        soir: item.soir,
-        unite: item.unite,
+        produit: <string>item.produit,
+        matin: <number>item.matin,
+        soir: <number>item.soir,
+        unite: <string>item.unite,
       };
     });
 
-    const updates = denrees.map((item) => {
-      return {
-        produit: `${item.produit.toString()}`,
-        quantite: +item.matin + +item.soir,
-      };
-    });
-    return updates;
+    return denrees;
   }
 
   async updateBooklet(

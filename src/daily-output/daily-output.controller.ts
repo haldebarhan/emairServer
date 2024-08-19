@@ -6,10 +6,14 @@ import { DailyOutputService } from './daily-output.service';
 export class DailyOutputController {
   constructor(private readonly dailyService: DailyOutputService) {}
 
-  
-  @Get(':id')
-  async getOne(@Param('id') id: string) {
-    const result = await this.dailyService.findOne(id);
+  @Get(':year/:month/:index')
+  async getOne(
+    @Param('year') year: number,
+    @Param('month') month: number,
+    @Param('index') index: number,
+  ) {
+    const date = new Date(`${year}-${month}-${index}`);
+    const result = await this.dailyService.findOneByDate(date);
     return result;
   }
   async Create(data: CreateDailyOutputDto) {
