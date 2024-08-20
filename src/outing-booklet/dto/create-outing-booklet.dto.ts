@@ -13,8 +13,8 @@ export class CreateOutingBookletDto {
     conso: Array<number>;
     balance: Array<number>;
     existant: number;
-    d_appro: number;
-    d_conso: number;
-    d_balance: number;
+    d_appro?: number;
+    d_conso?: number;
+    d_balance?: number;
   }[];
 }

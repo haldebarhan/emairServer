@@ -8,6 +8,9 @@ import { MonthlyTableService } from 'src/monthly-table/monthly-table.service';
 import { UniteService } from 'src/unite/unite.service';
 import { getDayInMonth } from 'src/helpers/dayInmonth.helper';
 import { CreateMonthlyTableDto } from 'src/monthly-table/dto/create-monthlyTable.dto';
+import { getCurrentMonthAndYear } from 'src/helpers/getCurrentMonthAndYear';
+import { CreateOutingBookletDto } from 'src/outing-booklet/dto/create-outing-booklet.dto';
+import { OutingBookletService } from 'src/outing-booklet/outing-booklet.service';
 
 @Controller('magasin')
 export class MagasinController {
@@ -16,7 +19,103 @@ export class MagasinController {
     private readonly denreeService: DenreeService,
     private readonly monthlyTable: MonthlyTableService,
     private readonly uniteService: UniteService,
+    private readonly outingBookletService: OutingBookletService,
   ) {}
+
+  @Post('/next-month')
+  async nextMonth(@Body() data: { magasin: string }) {
+    try {
+      const denrees = await this.denreeService.findAll();
+      const current_store = await this.magService.getOne(data.magasin);
+      const current_store_date = current_store.date;
+      const current_store_stock = current_store.stock;
+
+      const next_store_date_string = getNextMonth(
+        current_store_date.toString(),
+      );
+      const next_store_date = new Date(next_store_date_string);
+      const next_month_store_stock = current_store_stock.map((produit) => {
+        const finded = denrees.find(
+          (prod) => prod.produit == produit.denree.produit,
+        );
+        return {
+          denree: finded._id.toString(),
+          quantite: produit.balance,
+          conso: 0,
+          appro: 0,
+          balance: produit.balance,
+        };
+      });
+
+      const next_month_data: CreateMagasinDto = {
+        date: next_store_date,
+        stock: next_month_store_stock,
+      };
+
+      const new_store_id = (await this.magService.create(next_month_data))._id.toString();
+      const created_store = await this.magService.getOne(new_store_id)
+   
+      let { year, month } = getCurrentMonthAndYear(
+        created_store.date.toString(),
+      );
+      month += 1;
+      const totalDay = getDayInMonth(month, year);
+      const units = await this.uniteService.findAll();
+      const unites = units.map((unite) => {
+        return {
+          nom: unite.nom,
+          matin: Array(totalDay).fill(''),
+          midi: Array(totalDay).fill(''),
+          soir: Array(totalDay).fill(''),
+          totalMatin: 0,
+          totalMidi: 0,
+          totalSoir: 0,
+        };
+      });
+      let totalMatin = Array(totalDay).fill('');
+      let totalMidi = Array(totalDay).fill('');
+      let totalSoir = Array(totalDay).fill('');
+      let totalRow = Array(totalDay).fill(0);
+
+      const tableData: CreateMonthlyTableDto = {
+        magasin: created_store._id.toString(),
+        unites,
+        totalMatin,
+        totalMidi,
+        totalSoir,
+        totalRow,
+      };
+
+      await this.monthlyTable.generateTable(tableData);
+
+      const carnet = created_store.stock.map((denree) => {
+        const existant = denree.quantite;
+        const appro = Array<number>(totalDay).fill(0);
+        const conso = Array<number>(totalDay).fill(0);
+        const balance = Array<number>(totalDay).fill(0);
+        balance[0] = existant
+        return {
+          produit: denree.denree.produit,
+          appro: appro,
+          conso: conso,
+          balance: balance,
+          existant: existant,
+        };
+      });
+      const outingBooklet_data: CreateOutingBookletDto = {
+        magasin: created_store._id.toString(),
+        total_matin: Array<number>(totalDay).fill(0),
+        total_midi: Array<number>(totalDay).fill(0),
+        total_soir: Array<number>(totalDay).fill(0),
+        carnet,
+      };
+
+      await this.outingBookletService.create(outingBooklet_data);
+      return created_store;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   @Post()
   async create(@Body() body: { year: string; month: string }) {
