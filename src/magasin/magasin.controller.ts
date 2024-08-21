@@ -11,6 +11,7 @@ import { CreateMonthlyTableDto } from 'src/monthly-table/dto/create-monthlyTable
 import { getCurrentMonthAndYear } from 'src/helpers/getCurrentMonthAndYear';
 import { CreateOutingBookletDto } from 'src/outing-booklet/dto/create-outing-booklet.dto';
 import { OutingBookletService } from 'src/outing-booklet/outing-booklet.service';
+import { MonthlyStatusService } from 'src/monthly-status/monthly-status.service';
 
 @Controller('magasin')
 export class MagasinController {
@@ -20,6 +21,7 @@ export class MagasinController {
     private readonly monthlyTable: MonthlyTableService,
     private readonly uniteService: UniteService,
     private readonly outingBookletService: OutingBookletService,
+    private readonly monthlyStatusService: MonthlyStatusService
   ) {}
 
   @Post('/next-month')
@@ -111,6 +113,8 @@ export class MagasinController {
       };
 
       await this.outingBookletService.create(outingBooklet_data);
+      const monthly_date = {date: current_store_date}
+      await this.monthlyStatusService.create(monthly_date)
       return created_store;
     } catch (err) {
       console.log(err);

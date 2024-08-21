@@ -18,10 +18,7 @@ import { ConsommationModule } from 'src/consommation/consommation.module';
     MongooseModule.forFeature([
       { name: MonthlyStatus.name, schema: MonthlyStatusSchema },
     ]),
-    MagasinModule,
-    DenreeModule,
-    DailyOutputModule,
-    ConsommationModule,
   ],
+  exports: [MonthlyStatusService]
 })
 export class MonthlyStatusModule {}

@@ -7,6 +7,7 @@ import { DenreeModule } from 'src/denree/denree.module';
 import { MonthlyTableModule } from 'src/monthly-table/monthly-table.module';
 import { UniteModule } from 'src/unite/unite.module';
 import { OutingBookletModule } from 'src/outing-booklet/outing-booklet.module';
+import { MonthlyStatusModule } from 'src/monthly-status/monthly-status.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { OutingBookletModule } from 'src/outing-booklet/outing-booklet.module';
     DenreeModule,
     forwardRef(() => MonthlyTableModule),
     forwardRef(() => OutingBookletModule),
-    UniteModule
+    UniteModule,
+    MonthlyStatusModule
   ],
   providers: [MagasinService],
   controllers: [MagasinController],
