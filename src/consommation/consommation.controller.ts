@@ -12,21 +12,12 @@ import { ConsommationService } from './consommation.service';
 import { CreateConsommationDto } from './dto/create-consommation.dto';
 import { UpdateConsommationDto } from './dto/update-consommation.dto';
 import { DenreeService } from 'src/denree/denree.service';
-import { Consommation } from 'src/schemas/consommation.schema';
-import { Document, Types } from 'mongoose';
-import { ProductsUsedCalculation } from 'src/helpers/products-used.helper';
-import { Report } from 'src/models/Report';
-import { DailyOutputService } from 'src/daily-output/daily-output.service';
-import { DaiLyOutput } from 'src/models/daily-output';
-import { MagasinService } from 'src/magasin/magasin.service';
 
 @Controller('consommation')
 export class ConsommationController {
   constructor(
     private readonly consoService: ConsommationService,
     private denreeService: DenreeService,
-    private dailyService: DailyOutputService,
-    private magService: MagasinService
   ) {}
 
   @Post()
