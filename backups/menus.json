@@ -1,0 +1,154 @@
+[{
+  "_id": {
+    "$oid": "668d3597e6dbd657a2d32372"
+  },
+  "jour": "Lundi",
+  "petit_dejeuner": {
+    "$oid": "668d29522d8b4830815c738a"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d3073e6dbd657a2d32299"
+  },
+  "dejeuner": {
+    "$oid": "668d30f5e6dbd657a2d322ac"
+  },
+  "dessert": {
+    "$oid": "668d322ce6dbd657a2d32303"
+  },
+  "diner": {
+    "$oid": "668d3159e6dbd657a2d322d2"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d368de6dbd657a2d32433"
+  },
+  "jour": "Mardi",
+  "petit_dejeuner": {
+    "$oid": "668d31c1e6dbd657a2d322f7"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d31e8e6dbd657a2d322fb"
+  },
+  "dejeuner": {
+    "$oid": "668d3218e6dbd657a2d322ff"
+  },
+  "dessert": {
+    "$oid": "668d3122e6dbd657a2d322bf"
+  },
+  "diner": {
+    "$oid": "668d34c2e6dbd657a2d32333"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3730e6dbd657a2d32505"
+  },
+  "jour": "Mercredi",
+  "petit_dejeuner": {
+    "$oid": "668d29522d8b4830815c738a"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d36f8e6dbd657a2d324a0"
+  },
+  "dejeuner": {
+    "$oid": "668d3275e6dbd657a2d32306"
+  },
+  "dessert": {
+    "$oid": "668d328ce6dbd657a2d3230a"
+  },
+  "diner": {
+    "$oid": "668d32b8e6dbd657a2d3230d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d378ae6dbd657a2d325bc"
+  },
+  "jour": "Jeudi",
+  "petit_dejeuner": {
+    "$oid": "668d31c1e6dbd657a2d322f7"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d32e1e6dbd657a2d32311"
+  },
+  "dejeuner": {
+    "$oid": "668d355ee6dbd657a2d3233e"
+  },
+  "dessert": {
+    "$oid": "668d332fe6dbd657a2d32319"
+  },
+  "diner": {
+    "$oid": "668d336fe6dbd657a2d3231c"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d37c8e6dbd657a2d32617"
+  },
+  "jour": "Vendredi",
+  "petit_dejeuner": {
+    "$oid": "668d29522d8b4830815c738a"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d33a3e6dbd657a2d32320"
+  },
+  "dejeuner": {
+    "$oid": "668d33d1e6dbd657a2d32324"
+  },
+  "dessert": {
+    "$oid": "668d332fe6dbd657a2d32319"
+  },
+  "diner": {
+    "$oid": "668d3411e6dbd657a2d32328"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d37f9e6dbd657a2d32678"
+  },
+  "jour": "Samedi",
+  "petit_dejeuner": {
+    "$oid": "668d31c1e6dbd657a2d322f7"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d36f8e6dbd657a2d324a0"
+  },
+  "dejeuner": {
+    "$oid": "668d3489e6dbd657a2d3232f"
+  },
+  "dessert": {
+    "$oid": "668d322ce6dbd657a2d32303"
+  },
+  "diner": {
+    "$oid": "668d34c2e6dbd657a2d32333"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d382be6dbd657a2d326db"
+  },
+  "jour": "Dimanche",
+  "petit_dejeuner": {
+    "$oid": "668d29522d8b4830815c738a"
+  },
+  "hors_doeuvre": {
+    "$oid": "668d34e9e6dbd657a2d32337"
+  },
+  "dejeuner": {
+    "$oid": "668d3540e6dbd657a2d3233a"
+  },
+  "dessert": {
+    "$oid": "668d3122e6dbd657a2d322bf"
+  },
+  "diner": {
+    "$oid": "668d355ee6dbd657a2d3233e"
+  },
+  "__v": 0
+}]

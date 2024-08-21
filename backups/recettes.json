@@ -1,0 +1,695 @@
+[{
+  "_id": {
+    "$oid": "668d29522d8b4830815c738a"
+  },
+  "nomRecette": "PAIN BEURRÉ / CAFÉ AU LAIT",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668c879d40245b2020d062c1"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d29722d8b4830815c73dd"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668c8d068a9e5f5ad890be84"
+      },
+      "ration": 300,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d29722d8b4830815c73de"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d1f3e2c17c515dc8c92ff"
+      },
+      "ration": 80,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d29722d8b4830815c73df"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668c8d7c8a9e5f5ad890be97"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d29722d8b4830815c73e0"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3073e6dbd657a2d32299"
+  },
+  "nomRecette": "SALADE PATRIOTE",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d3030e6dbd657a2d32294"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3073e6dbd657a2d3229a"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d19612c17c515dc8c923c"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3073e6dbd657a2d3229b"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d1f3e2c17c515dc8c92ff"
+      },
+      "ration": 10,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3073e6dbd657a2d3229c"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668c8de88a9e5f5ad890bea2"
+      },
+      "ration": 10,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3073e6dbd657a2d3229d"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d30f5e6dbd657a2d322ac"
+  },
+  "nomRecette": "VIANDE SAUTÉ DE BOEUF SAUCE AUBERGINE / RIZ PILAF",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d14a62c17c515dc8c91c8"
+      },
+      "ration": 150,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d30f5e6dbd657a2d322ad"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d132e2c17c515dc8c919e"
+      },
+      "ration": 10,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d30f5e6dbd657a2d322ae"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3122e6dbd657a2d322bf"
+  },
+  "nomRecette": "FRUIT DE SAISON (ANANAS)",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d2f8de6dbd657a2d32283"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3122e6dbd657a2d322c0"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3159e6dbd657a2d322d2"
+  },
+  "nomRecette": "POISSON FRIT COULISSÉ D'AUBERGINE / IGNAME VAPEUR",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d160e2c17c515dc8c91e6"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3159e6dbd657a2d322d3"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d14e32c17c515dc8c91ce"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3159e6dbd657a2d322d4"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d31c1e6dbd657a2d322f7"
+  },
+  "nomRecette": "PAIN CHOCOFUN / CAFE AU LAIT",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668c879d40245b2020d062c1"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d31c1e6dbd657a2d322f8"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668c8d068a9e5f5ad890be84"
+      },
+      "ration": 10,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d31c1e6dbd657a2d322f9"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d31e8e6dbd657a2d322fb"
+  },
+  "nomRecette": "SARDINE À L'OIGNON",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d16e72c17c515dc8c9201"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d31e8e6dbd657a2d322fc"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668c8de88a9e5f5ad890bea2"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d31e8e6dbd657a2d322fd"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3218e6dbd657a2d322ff"
+  },
+  "nomRecette": "POISSON FRIT SAUCE MAQUIS / ATTIEKE",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d14e32c17c515dc8c91ce"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3218e6dbd657a2d32300"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d18ac2c17c515dc8c922a"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3218e6dbd657a2d32301"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d322ce6dbd657a2d32303"
+  },
+  "nomRecette": "FRUIT DE SAISON",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d1a852c17c515dc8c9258"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d322ce6dbd657a2d32304"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3275e6dbd657a2d32306"
+  },
+  "nomRecette": "POULET FRIT SAUCE LEGUME / COUCOUS AU BEURRE",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d16992c17c515dc8c91f8"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3275e6dbd657a2d32307"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d152b2c17c515dc8c91d1"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3275e6dbd657a2d32308"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d328ce6dbd657a2d3230a"
+  },
+  "nomRecette": "YAOURT",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d15df2c17c515dc8c91e0"
+      },
+      "ration": 125,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d328ce6dbd657a2d3230b"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d32b8e6dbd657a2d3230d"
+  },
+  "nomRecette": "POISSON FRIT SAUCE AUBERGINE / RIZ BONNE DAME",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d16242c17c515dc8c91e9"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d32b8e6dbd657a2d3230e"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d132e2c17c515dc8c919e"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d32b8e6dbd657a2d3230f"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d32e1e6dbd657a2d32311"
+  },
+  "nomRecette": "PETIT POIS / PAIN",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d1f3e2c17c515dc8c92ff"
+      },
+      "ration": 80,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d32e1e6dbd657a2d32312"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d16b62c17c515dc8c91fb"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d32e1e6dbd657a2d32313"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3311e6dbd657a2d32315"
+  },
+  "nomRecette": "VIANDE DE BOEUF SAUCE LEGUME / RIZ AU GRAS",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d14a62c17c515dc8c91c8"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3311e6dbd657a2d32316"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d16242c17c515dc8c91e9"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3311e6dbd657a2d32317"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d332fe6dbd657a2d32319"
+  },
+  "nomRecette": "FRUIT DE SAISON (BANANE)",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d1aa72c17c515dc8c925b"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d332fe6dbd657a2d3231a"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d336fe6dbd657a2d3231c"
+  },
+  "nomRecette": "VIANDE SAUTE DE BOEUF SAUCE TOMATE SPAGHETTI / PAIN",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d1f3e2c17c515dc8c92ff"
+      },
+      "ration": 80,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d336fe6dbd657a2d3231d"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d16462c17c515dc8c91ec"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d336fe6dbd657a2d3231e"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d33a3e6dbd657a2d32320"
+  },
+  "nomRecette": "OEUFS BROUILLÉS / PAIN",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d1f3e2c17c515dc8c92ff"
+      },
+      "ration": 80,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d33a3e6dbd657a2d32321"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d186e2c17c515dc8c9224"
+      },
+      "ration": 1,
+      "unite": "UNITE",
+      "_id": {
+        "$oid": "668d33a3e6dbd657a2d32322"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d33d1e6dbd657a2d32324"
+  },
+  "nomRecette": "POISSON FRIT CRUDITÉ / ATTIEKE",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d18ac2c17c515dc8c922a"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d33d1e6dbd657a2d32325"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d14e32c17c515dc8c91ce"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d33d1e6dbd657a2d32326"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3411e6dbd657a2d32328"
+  },
+  "nomRecette": "POULET FRIT POMME DE TERRE SAUTÉE / PAIN",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d1f3e2c17c515dc8c92ff"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3411e6dbd657a2d32329"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d152b2c17c515dc8c91d1"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3411e6dbd657a2d3232a"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3489e6dbd657a2d3232f"
+  },
+  "nomRecette": "VIANDE DE BOEUF SAUTÉE SAUCE GOUAGOUASSOU /RIZ PILAF",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d14a62c17c515dc8c91c8"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3489e6dbd657a2d32330"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d16242c17c515dc8c91e9"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3489e6dbd657a2d32331"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d34c2e6dbd657a2d32333"
+  },
+  "nomRecette": "POISSON FRIT SAUCE DJOUMBLÉ / RIZ BONNE DAME",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d16242c17c515dc8c91e9"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d34c2e6dbd657a2d32334"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d14e32c17c515dc8c91ce"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d34c2e6dbd657a2d32335"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d34e9e6dbd657a2d32337"
+  },
+  "nomRecette": "SALADE DE LAITUE",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668c8de88a9e5f5ad890bea2"
+      },
+      "ration": 10,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d34e9e6dbd657a2d32338"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3540e6dbd657a2d3233a"
+  },
+  "nomRecette": "VIANDE SAUTÉE DE BŒUF SAUCE ARACHIDE / RIZ BONNE DAME",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d16242c17c515dc8c91e9"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3540e6dbd657a2d3233b"
+      }
+    },
+    {
+      "denree": {
+        "$oid": "668d17f72c17c515dc8c921e"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d3540e6dbd657a2d3233c"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d355ee6dbd657a2d3233e"
+  },
+  "nomRecette": "SAUTÉ DE BOEUF / RIZ AU GRAS",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d16242c17c515dc8c91e9"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d355ee6dbd657a2d3233f"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d36f8e6dbd657a2d324a0"
+  },
+  "nomRecette": "SALADE DE CRUDITÉS",
+  "ingredients": [
+    {
+      "denree": {
+        "$oid": "668d12ff2c17c515dc8c9198"
+      },
+      "ration": 100,
+      "unite": "g",
+      "_id": {
+        "$oid": "668d36f8e6dbd657a2d324a1"
+      }
+    }
+  ],
+  "__v": 0
+}]

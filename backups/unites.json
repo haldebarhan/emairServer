@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "668d1c142c17c515dc8c928d"
+  },
+  "nom": "EMAIR",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1c212c17c515dc8c9290"
+  },
+  "nom": "BAA",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1c2a2c17c515dc8c9293"
+  },
+  "nom": "GFCA",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1c302c17c515dc8c9296"
+  },
+  "nom": "DALOA",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1c3d2c17c515dc8c9299"
+  },
+  "nom": "JACQUEVILLE",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1c462c17c515dc8c929c"
+  },
+  "nom": "SOA HANDBALL",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1c522c17c515dc8c929f"
+  },
+  "nom": "PASSAGERS",
+  "__v": 0
+}]

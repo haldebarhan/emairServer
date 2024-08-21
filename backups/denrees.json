@@ -1,0 +1,1312 @@
+[{
+  "_id": {
+    "$oid": "668c879d40245b2020d062c1"
+  },
+  "produit": "LAIT CONCENTRÉ",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8d068a9e5f5ad890be84"
+  },
+  "produit": "SUCRE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e3a570d999f8c821466"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8d358a9e5f5ad890be8c"
+  },
+  "produit": "NESCAFÉ",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8d7c8a9e5f5ad890be97"
+  },
+  "produit": "NESQUIK",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 1200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8de88a9e5f5ad890bea2"
+  },
+  "produit": "OIGNON",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8e518a9e5f5ad890bea5"
+  },
+  "produit": "BEURRE 200G",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e8c570d999f8c821470"
+  },
+  "equivalence": 200,
+  "valeur": "g",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8e868a9e5f5ad890bea8"
+  },
+  "produit": "VINAIGRE",
+  "uc": {
+    "$oid": "668c7d99570d999f8c821454"
+  },
+  "mesure": {
+    "$oid": "668c7e0c570d999f8c82145a"
+  },
+  "equivalence": 50,
+  "valeur": "cl",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8ed98a9e5f5ad890beb0"
+  },
+  "produit": "OIGNON VERT",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 20,
+  "valeur": "g",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8f048a9e5f5ad890beb3"
+  },
+  "produit": "MANIOC",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e68570d999f8c82146e"
+  },
+  "equivalence": 500,
+  "valeur": "g",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8f228a9e5f5ad890beb6"
+  },
+  "produit": "SOUMALA",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e27570d999f8c821460"
+  },
+  "equivalence": 60,
+  "valeur": "g",
+  "pu": 25,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668c8f578a9e5f5ad890beb9"
+  },
+  "produit": "LAURIER",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e21570d999f8c82145e"
+  },
+  "equivalence": 10,
+  "valeur": "g",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d12a82c17c515dc8c918f"
+  },
+  "produit": "TOMATE FRAÎCHE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d12d02c17c515dc8c9192"
+  },
+  "produit": "TOMATE CONCENTRÉE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d12e92c17c515dc8c9195"
+  },
+  "produit": "CHOUX",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d12ff2c17c515dc8c9198"
+  },
+  "produit": "CONCOMBRE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13172c17c515dc8c919b"
+  },
+  "produit": "CAROTTE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d132e2c17c515dc8c919e"
+  },
+  "produit": "AUBERGINE AFRICAINE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d134c2c17c515dc8c91a1"
+  },
+  "produit": "AUBERGINE NOIRE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13722c17c515dc8c91a4"
+  },
+  "produit": "PERSIL",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 100,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13822c17c515dc8c91a7"
+  },
+  "produit": "COURGETTE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13a02c17c515dc8c91aa"
+  },
+  "produit": "COURGE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13b52c17c515dc8c91ad"
+  },
+  "produit": "NAVET",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13db2c17c515dc8c91b0"
+  },
+  "produit": "CUBE MAGGI",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e68570d999f8c82146e"
+  },
+  "equivalence": 10,
+  "valeur": "g",
+  "pu": 50,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d13f72c17c515dc8c91b3"
+  },
+  "produit": "MAGGI VARIÉS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e68570d999f8c82146e"
+  },
+  "equivalence": 10,
+  "valeur": "g",
+  "pu": 50,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14062c17c515dc8c91b6"
+  },
+  "produit": "SEL",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d141c2c17c515dc8c91b9"
+  },
+  "produit": "FARINE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14352c17c515dc8c91bc"
+  },
+  "produit": "OLIVE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14582c17c515dc8c91bf"
+  },
+  "produit": "PIMENT FRAIS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d146a2c17c515dc8c91c2"
+  },
+  "produit": "PIMENT SEC",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14812c17c515dc8c91c5"
+  },
+  "produit": "PIMENT EN POUDRE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14a62c17c515dc8c91c8"
+  },
+  "produit": "BŒUF",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 2500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14cb2c17c515dc8c91cb"
+  },
+  "produit": "POISSON SEC",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d14e32c17c515dc8c91ce"
+  },
+  "produit": "POISSON FRAIS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 3000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d152b2c17c515dc8c91d1"
+  },
+  "produit": "POULET",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e60570d999f8c82146c"
+  },
+  "equivalence": 1300,
+  "valeur": "g",
+  "pu": 2150,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d15502c17c515dc8c91d4"
+  },
+  "produit": "BASILIC",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 30,
+  "valeur": "g",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d15602c17c515dc8c91d7"
+  },
+  "produit": "MOUTON",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 3000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d157f2c17c515dc8c91da"
+  },
+  "produit": "VIANDE HACHÉE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 2000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d15a92c17c515dc8c91dd"
+  },
+  "produit": "TRIPE DE BŒUF",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d15df2c17c515dc8c91e0"
+  },
+  "produit": "YAOURT",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 250,
+  "valeur": "g",
+  "pu": 350,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d15fd2c17c515dc8c91e3"
+  },
+  "produit": "ADJOVAN",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e68570d999f8c82146e"
+  },
+  "equivalence": 5,
+  "valeur": "g",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d160e2c17c515dc8c91e6"
+  },
+  "produit": "IGNAME",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 2000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16242c17c515dc8c91e9"
+  },
+  "produit": "RIZ",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16462c17c515dc8c91ec"
+  },
+  "produit": "SPAGHETTI",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e21570d999f8c82145e"
+  },
+  "equivalence": 100,
+  "valeur": "g",
+  "pu": 250,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16642c17c515dc8c91ef"
+  },
+  "produit": "HUILE",
+  "uc": {
+    "$oid": "668c7d99570d999f8c821454"
+  },
+  "mesure": {
+    "$oid": "668c7e0c570d999f8c82145a"
+  },
+  "equivalence": 100,
+  "valeur": "cl",
+  "pu": 1500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16772c17c515dc8c91f2"
+  },
+  "produit": "HUILE ROUGE",
+  "uc": {
+    "$oid": "668c7d99570d999f8c821454"
+  },
+  "mesure": {
+    "$oid": "668c7e0c570d999f8c82145a"
+  },
+  "equivalence": 100,
+  "valeur": "cl",
+  "pu": 1500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16882c17c515dc8c91f5"
+  },
+  "produit": "RAISIN SEC",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16992c17c515dc8c91f8"
+  },
+  "produit": "COUSCOUS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 800,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16b62c17c515dc8c91fb"
+  },
+  "produit": "PETIT POIS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 400,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16d02c17c515dc8c91fe"
+  },
+  "produit": "THON",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 250,
+  "valeur": "g",
+  "pu": 350,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d16e72c17c515dc8c9201"
+  },
+  "produit": "SARDINE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 250,
+  "valeur": "g",
+  "pu": 350,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d170f2c17c515dc8c9204"
+  },
+  "produit": "ALUMINIUM",
+  "uc": {
+    "$oid": "668c838e44fb5805678c45de"
+  },
+  "mesure": {
+    "$oid": "668c7e33570d999f8c821464"
+  },
+  "equivalence": 500,
+  "valeur": "UNITE",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d172a2c17c515dc8c9207"
+  },
+  "produit": "ESSUIE-TOUT",
+  "uc": {
+    "$oid": "668c838e44fb5805678c45de"
+  },
+  "mesure": {
+    "$oid": "668c7e33570d999f8c821464"
+  },
+  "equivalence": 500,
+  "valeur": "UNITE",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d176e2c17c515dc8c920f"
+  },
+  "produit": "MOUTARDE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7ebf570d999f8c821472"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d178c2c17c515dc8c9212"
+  },
+  "produit": "EPINARD",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 100,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d17a82c17c515dc8c9215"
+  },
+  "produit": "FEUILLE DE PATATE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 100,
+  "valeur": "g",
+  "pu": 200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d17ca2c17c515dc8c9218"
+  },
+  "produit": "DJOUMBLE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d17e12c17c515dc8c921b"
+  },
+  "produit": "POTASSE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e68570d999f8c82146e"
+  },
+  "equivalence": 10,
+  "valeur": "g",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d17f72c17c515dc8c921e"
+  },
+  "produit": "PATE D'ARACHIDE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d18462c17c515dc8c9221"
+  },
+  "produit": "HARICOT VERT",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 400,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d186e2c17c515dc8c9224"
+  },
+  "produit": "OEUF",
+  "uc": {
+    "$oid": "668c838e44fb5805678c45de"
+  },
+  "mesure": {
+    "$oid": "668c7e8c570d999f8c821470"
+  },
+  "equivalence": 30,
+  "valeur": "UNITE",
+  "pu": 2200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d18922c17c515dc8c9227"
+  },
+  "produit": "MACÉDOINE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 600,
+  "valeur": "g",
+  "pu": 400,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d18ac2c17c515dc8c922a"
+  },
+  "produit": "ATTIÉKÉ",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d18d42c17c515dc8c922d"
+  },
+  "produit": "CRÈME FRAÎCHE",
+  "uc": {
+    "$oid": "668c7d99570d999f8c821454"
+  },
+  "mesure": {
+    "$oid": "668c7e0c570d999f8c82145a"
+  },
+  "equivalence": 50,
+  "valeur": "cl",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d18e82c17c515dc8c9230"
+  },
+  "produit": "POIVRE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d18fb2c17c515dc8c9233"
+  },
+  "produit": "POIVRON",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d19152c17c515dc8c9236"
+  },
+  "produit": "PKALALA",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 40,
+  "valeur": "g",
+  "pu": 200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d19362c17c515dc8c9239"
+  },
+  "produit": "CÉLERI",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 30,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d19612c17c515dc8c923c"
+  },
+  "produit": "MAÏS DOUX",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e2b570d999f8c821462"
+  },
+  "equivalence": 100,
+  "valeur": "g",
+  "pu": 400,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d197d2c17c515dc8c923f"
+  },
+  "produit": "CHIRCHARD",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d19f52c17c515dc8c9246"
+  },
+  "produit": "AIL",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668d19db2c17c515dc8c9241"
+  },
+  "equivalence": 50,
+  "valeur": "g",
+  "pu": 200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1a0c2c17c515dc8c9249"
+  },
+  "produit": "GOMBO FRAIS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1a252c17c515dc8c924c"
+  },
+  "produit": "CHAMPIGNON",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 100,
+  "valeur": "g",
+  "pu": 300,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1a3d2c17c515dc8c924f"
+  },
+  "produit": "AVOCAT",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e68570d999f8c82146e"
+  },
+  "equivalence": 200,
+  "valeur": "g",
+  "pu": 200,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1a592c17c515dc8c9252"
+  },
+  "produit": "SERVIETTE JETABLE",
+  "uc": {
+    "$oid": "668c838e44fb5805678c45de"
+  },
+  "mesure": {
+    "$oid": "668c7e3a570d999f8c821466"
+  },
+  "equivalence": 500,
+  "valeur": "UNITE",
+  "pu": 500,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1a6f2c17c515dc8c9255"
+  },
+  "produit": "HARICOT",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 700,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1a852c17c515dc8c9258"
+  },
+  "produit": "ORANGE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1aa72c17c515dc8c925b"
+  },
+  "produit": "BANANE DOUCE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d1f3e2c17c515dc8c92ff"
+  },
+  "produit": "PAIN",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e18570d999f8c82145c"
+  },
+  "equivalence": 175,
+  "valeur": "g",
+  "pu": 140,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d29b12d8b4830815c740e"
+  },
+  "produit": "EAU (SACHET)",
+  "uc": {
+    "$oid": "668c7d99570d999f8c821454"
+  },
+  "mesure": {
+    "$oid": "668c7e21570d999f8c82145e"
+  },
+  "equivalence": 10,
+  "valeur": "cl",
+  "pu": 50,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d29d52d8b4830815c7411"
+  },
+  "produit": "EAU CELESTE",
+  "uc": {
+    "$oid": "668c7d99570d999f8c821454"
+  },
+  "mesure": {
+    "$oid": "668c7e0c570d999f8c82145a"
+  },
+  "equivalence": 30,
+  "valeur": "cl",
+  "pu": 100,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d2f8de6dbd657a2d32283"
+  },
+  "produit": "ANANAS",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e52570d999f8c82146a"
+  },
+  "equivalence": 1000,
+  "valeur": "g",
+  "pu": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668d3030e6dbd657a2d32294"
+  },
+  "produit": "SALADE",
+  "uc": {
+    "$oid": "668c7d43570d999f8c821452"
+  },
+  "mesure": {
+    "$oid": "668c7e47570d999f8c821468"
+  },
+  "equivalence": 30,
+  "valeur": "g",
+  "pu": 375,
+  "__v": 0
+}]
