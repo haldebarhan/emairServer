@@ -38,9 +38,9 @@ import { OutingBookletModule } from './outing-booklet/outing-booklet.module';
     MonthlyStatusModule,
     MonthlyTableModule,
     OutingBookletModule,
-    // ServeStaticModule.forRoot({
-    //   rootPath: join(__dirname, '..', 'public/ang-test/browser')
-    // })
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public/ang-test/browser')
+    })
   ],
   controllers: [AppController],
   providers: [AppService],
