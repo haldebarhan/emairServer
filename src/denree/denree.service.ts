@@ -3,8 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Denree } from 'src/schemas/denree.schema';
 import { CreateDenreeDto } from './dto/createDenree.dto';
-import { UpdateDenreeDto } from './dto/updateDenree.dto';
-import { throws } from 'assert';
 
 @Injectable()
 export class DenreeService {
@@ -21,22 +19,17 @@ export class DenreeService {
     const query = await this.denreeModel
       .find()
       .populate('mesure')
-      .populate('uc')
       .sort('produit')
       .exec();
     return query;
   }
 
   async findOne(id: string) {
-    const query = await this.denreeModel
-      .findById(id)
-      .populate('mesure')
-      .populate('uc')
-      .exec();
+    const query = await this.denreeModel.findById(id).populate('mesure').exec();
     if (!query) throw new NotFoundException('Aucunes données trouvée');
     return query;
   }
-  async updateDenree(denreeId: string, updateDenreeDto: UpdateDenreeDto) {
+  async updateDenree(denreeId: string, updateDenreeDto: Partial<CreateDenreeDto>) {
     const updatedUser = await this.denreeModel
       .findByIdAndUpdate(denreeId, updateDenreeDto, { new: true })
       .exec();
@@ -54,4 +47,5 @@ export class DenreeService {
       );
     }
   }
+
 }

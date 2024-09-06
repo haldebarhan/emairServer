@@ -21,7 +21,7 @@ export class MagasinController {
     private readonly monthlyTable: MonthlyTableService,
     private readonly uniteService: UniteService,
     private readonly outingBookletService: OutingBookletService,
-    private readonly monthlyStatusService: MonthlyStatusService
+    private readonly monthlyStatusService: MonthlyStatusService,
   ) {}
 
   @Post('/next-month')
@@ -54,9 +54,11 @@ export class MagasinController {
         stock: next_month_store_stock,
       };
 
-      const new_store_id = (await this.magService.create(next_month_data))._id.toString();
-      const created_store = await this.magService.getOne(new_store_id)
-   
+      const new_store_id = (
+        await this.magService.create(next_month_data)
+      )._id.toString();
+      const created_store = await this.magService.getOne(new_store_id);
+
       let { year, month } = getCurrentMonthAndYear(
         created_store.date.toString(),
       );
@@ -78,6 +80,7 @@ export class MagasinController {
       let totalMidi = Array(totalDay).fill('');
       let totalSoir = Array(totalDay).fill('');
       let totalRow = Array(totalDay).fill(0);
+      let menus = Array(totalDay).fill({ defined: false });
 
       const tableData: CreateMonthlyTableDto = {
         magasin: created_store._id.toString(),
@@ -86,6 +89,7 @@ export class MagasinController {
         totalMidi,
         totalSoir,
         totalRow,
+        menus,
       };
 
       await this.monthlyTable.generateTable(tableData);
@@ -95,7 +99,7 @@ export class MagasinController {
         const appro = Array<number>(totalDay).fill(0);
         const conso = Array<number>(totalDay).fill(0);
         const balance = Array<number>(totalDay).fill(0);
-        balance[0] = existant
+        balance[0] = existant;
         return {
           produit: denree.denree.produit,
           appro: appro,
@@ -113,8 +117,8 @@ export class MagasinController {
       };
 
       await this.outingBookletService.create(outingBooklet_data);
-      const monthly_date = {date: current_store_date}
-      await this.monthlyStatusService.create(monthly_date)
+      const monthly_date = { date: current_store_date };
+      await this.monthlyStatusService.create(monthly_date);
       return created_store;
     } catch (err) {
       console.log(err);
@@ -145,6 +149,7 @@ export class MagasinController {
       let totalMidi = Array(totalDay).fill('');
       let totalSoir = Array(totalDay).fill('');
       let totalRow = Array(totalDay).fill(0);
+      let menus = Array(totalDay).fill({ defined: false });
 
       const tableData: CreateMonthlyTableDto = {
         magasin: magasin._id.toString(),
@@ -153,6 +158,7 @@ export class MagasinController {
         totalMidi,
         totalSoir,
         totalRow,
+        menus,
       };
       await this.monthlyTable.generateTable(tableData);
       return magasin;

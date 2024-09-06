@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Recette } from 'src/schemas/recette.schema';
 import { CreateRecetteDto } from './dto/create-recette.dto';
-import { UpdateRecetteDto } from './dto/update-recette.dto';
 
 @Injectable()
 export class RecetteService {
@@ -20,6 +19,7 @@ export class RecetteService {
     const query = this.recetteModel
       .find()
       .populate('ingredients.denree')
+      .populate('type')
       .exec();
     return query;
   }
@@ -27,10 +27,8 @@ export class RecetteService {
   async findOneRecette(recetteId: string) {
     const query = this.recetteModel
       .findById(recetteId)
-      .populate({
-        path: 'ingredients.denree',
-        populate: [{ path: 'uc' }, { path: 'mesure' }],
-      })
+      .populate('type')
+      .populate('ingredients.denree')
       .exec();
     if (!query) throw new NotFoundException('denree non trouvee');
     return query;
@@ -38,7 +36,7 @@ export class RecetteService {
 
   async updateOneRecette(
     recetteId: string,
-    updateRecetteDto: UpdateRecetteDto,
+    updateRecetteDto: Partial<CreateRecetteDto>,
   ) {
     const updateRecette = await this.recetteModel
       .findByIdAndUpdate(recetteId, updateRecetteDto, { new: true })

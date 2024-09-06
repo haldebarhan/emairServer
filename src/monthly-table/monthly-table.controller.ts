@@ -9,12 +9,12 @@ import {
   Put,
 } from '@nestjs/common';
 import { MonthlyTableService } from './monthly-table.service';
-import { UpdateMonthlyTableDto } from './dto/update-monthlyTable.dto';
 import { getCurrentMonthAndYear } from 'src/helpers/getCurrentMonthAndYear';
 import { MenuService } from 'src/menu/menu.service';
 import { getDayName } from 'src/helpers/getDayName';
 import { CreateConsommationDto } from 'src/consommation/dto/create-consommation.dto';
 import { ConsommationService } from 'src/consommation/consommation.service';
+import { CreateMonthlyTableDto } from './dto/create-monthlyTable.dto';
 
 @Controller('monthly-table')
 export class MonthlyTableController {
@@ -22,11 +22,11 @@ export class MonthlyTableController {
     private readonly monthlyTableService: MonthlyTableService,
     private readonly consoService: ConsommationService,
   ) {}
-  
+
   @Put(':id')
   async updateTable(
     @Param('id') id: string,
-    @Body() data: UpdateMonthlyTableDto,
+    @Body() data: Partial<CreateMonthlyTableDto>,
   ) {
     try {
       const result = await this.monthlyTableService.updateTable(id, data);

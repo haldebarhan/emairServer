@@ -75,9 +75,9 @@ export class ConsommationController {
         ration: item.ration,
         unite: item.unite,
         produit: denreeCorrespondante.produit,
-        uc: denreeCorrespondante.uc.conversion,
+        // uc: denreeCorrespondante.uc.conversion,
         mesure: denreeCorrespondante.mesure.unite,
-        eq: denreeCorrespondante.equivalence,
+        // eq: denreeCorrespondante.equivalence,
       };
     });
     return data;

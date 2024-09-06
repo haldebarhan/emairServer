@@ -19,10 +19,11 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MonthlyTableModule } from './monthly-table/monthly-table.module';
 import { OutingBookletModule } from './outing-booklet/outing-booklet.module';
+import { RecetteTypeModule } from './recette-type/recette-type.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/ordiDB'),
+    MongooseModule.forRoot('mongodb://localhost/version2'),
     MagasinModule,
     MesureModule,
     DenreeModule,
@@ -40,7 +41,8 @@ import { OutingBookletModule } from './outing-booklet/outing-booklet.module';
     OutingBookletModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public/ang-test/browser')
-    })
+    }),
+    RecetteTypeModule
   ],
   controllers: [AppController],
   providers: [AppService],

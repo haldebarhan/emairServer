@@ -3,7 +3,6 @@ import { CreateMonthlyTableDto } from './dto/create-monthlyTable.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { MonthlyTable } from 'src/schemas/monthly-table.schema';
 import { Model } from 'mongoose';
-import { UpdateMonthlyTableDto } from './dto/update-monthlyTable.dto';
 
 @Injectable()
 export class MonthlyTableService {
@@ -24,7 +23,7 @@ export class MonthlyTableService {
     return result;
   }
 
-  async updateTable(tableId: string, data: UpdateMonthlyTableDto) {
+  async updateTable(tableId: string, data: Partial<CreateMonthlyTableDto>) {
     const update = await this.monthlyTableModel
       .findByIdAndUpdate(tableId, data, { new: true })
       .exec();

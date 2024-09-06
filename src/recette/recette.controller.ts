@@ -11,7 +11,6 @@ import {
 } from '@nestjs/common';
 import { RecetteService } from './recette.service';
 import { CreateRecetteDto } from './dto/create-recette.dto';
-import { UpdateRecetteDto } from './dto/update-recette.dto';
 
 @Controller('recette')
 export class RecetteController {
@@ -32,10 +31,14 @@ export class RecetteController {
   @Get(':id')
   async GetOneRecette(@Param('id') id: string) {
     const result = await this.recetteService.findOneRecette(id);
+    let ingredients = result.ingredients.map(ing => {
+      return {denree: ing.denree.produit, ration: ing.ration, unite: ing.unite}
+    })
     const data = {
       id: result._id,
-      nom: result.nomRecette,
-      ingredients: result.ingredients,
+      nomRecette: result.nomRecette,
+      ingredients: ingredients,
+      type: result.type.libelle
     };
     if(!data) throw new NotFoundException("Aucune donnée correspondante")
     return data;
@@ -44,7 +47,7 @@ export class RecetteController {
   @Patch(':id')
   async updateRecette(
     @Param('id') id: string,
-    @Body() updateRecetteDto: UpdateRecetteDto,
+    @Body() updateRecetteDto: Partial<CreateRecetteDto>,
   ) {
     return this.recetteService.updateOneRecette(id, updateRecetteDto);
   }

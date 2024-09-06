@@ -1,3 +1,5 @@
+import { Menu } from 'src/models/Menu';
+
 export class CreateMonthlyTableDto {
   magasin: string;
   unites: {
@@ -14,4 +16,5 @@ export class CreateMonthlyTableDto {
   totalMidi: Array<number>;
   totalSoir: Array<number>;
   totalRow: Array<number>;
+  menus: Array<Partial<Menu>>;
 }

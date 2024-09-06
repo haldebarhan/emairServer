@@ -34,15 +34,14 @@ export class DenreeController {
   @Get()
   async findAll() {
     const denrees = await this.denreeService.findAll();
-    return denrees.map((product) => ({
+    const denrees_list = denrees.map((product) => ({
       id: product._id,
       product: product.produit,
       mesure: product.mesure.unite,
-      uc: product.uc.conversion,
-      equivalence: product.equivalence,
       pu: product.pu,
-      valeur: product.valeur
     }));
+
+    return denrees_list;
   }
 
   @Get(':id')
@@ -52,10 +51,10 @@ export class DenreeController {
       id: result._id,
       product: result.produit,
       mesure: result.mesure.unite,
-      uc: result.uc.conversion,
-      equivalence: result.equivalence,
+      // uc: result.uc.conversion,
+      // equivalence: result.equivalence,
       pu: result.pu,
-      valeur: result.valeur
+      // valeur: result.valeur
     };
     return data;
   }
